@@ -2392,5 +2392,317 @@
 		"blocks": 4136,
 		"accounts": 247075,
 		"transactions": 56081
+	},
+	{
+		"date": "2017.11.19",
+		"blocks": 4244,
+		"accounts": 250188,
+		"transactions": 40573
+	},
+	{
+		"date": "2017.11.20",
+		"blocks": 4239,
+		"accounts": 253326,
+		"transactions": 39417
+	},
+	{
+		"date": "2017.11.21",
+		"blocks": 4269,
+		"accounts": 255675,
+		"transactions": 31601
+	},
+	{
+		"date": "2017.11.22",
+		"blocks": 4319,
+		"accounts": 257662,
+		"transactions": 31348
+	},
+	{
+		"date": "2017.11.23",
+		"blocks": 4283,
+		"accounts": 259508,
+		"transactions": 27992
+	},
+	{
+		"date": "2017.11.24",
+		"blocks": 4521,
+		"accounts": 261163,
+		"transactions": 28673
+	},
+	{
+		"date": "2017.11.25",
+		"blocks": 4513,
+		"accounts": 262946,
+		"transactions": 32205
+	},
+	{
+		"date": "2017.11.26",
+		"blocks": 4174,
+		"accounts": 264587,
+		"transactions": 31645
+	},
+	{
+		"date": "2017.11.27",
+		"blocks": 4070,
+		"accounts": 266636,
+		"transactions": 34229
+	},
+	{
+		"date": "2017.11.28",
+		"blocks": 4218,
+		"accounts": 269047,
+		"transactions": 32582
+	},
+	{
+		"date": "2017.11.29",
+		"blocks": 4104,
+		"accounts": 271303,
+		"transactions": 32895
+	},
+	{
+		"date": "2017.11.30",
+		"blocks": 4073,
+		"accounts": 273055,
+		"transactions": 28603
+	},
+	{
+		"date": "2017.12.01",
+		"blocks": 4078,
+		"accounts": 275213,
+		"transactions": 30079
+	},
+	{
+		"date": "2017.12.02",
+		"blocks": 4050,
+		"accounts": 276880,
+		"transactions": 27847
+	},
+	{
+		"date": "2017.12.03",
+		"blocks": 3907,
+		"accounts": 278952,
+		"transactions": 32430
+	},
+	{
+		"date": "2017.12.04",
+		"blocks": 3896,
+		"accounts": 281516,
+		"transactions": 36849
+	},
+	{
+		"date": "2017.12.05",
+		"blocks": 3926,
+		"accounts": 283526,
+		"transactions": 30998
+	},
+	{
+		"date": "2017.12.06",
+		"blocks": 3908,
+		"accounts": 286118,
+		"transactions": 32145
+	},
+	{
+		"date": "2017.12.07",
+		"blocks": 3879,
+		"accounts": 288442,
+		"transactions": 31018
+	},
+	{
+		"date": "2017.12.08",
+		"blocks": 3793,
+		"accounts": 340306,
+		"transactions": 88917
+	},
+	{
+		"date": "2017.12.09",
+		"blocks": 3852,
+		"accounts": 370397,
+		"transactions": 50434
+	},
+	{
+		"date": "2017.12.10",
+		"blocks": 3909,
+		"accounts": 371919,
+		"transactions": 26508
+	},
+	{
+		"date": "2017.12.11",
+		"blocks": 3926,
+		"accounts": 373826,
+		"transactions": 31139
+	},
+	{
+		"date": "2017.12.12",
+		"blocks": 3807,
+		"accounts": 376205,
+		"transactions": 36605
+	},
+	{
+		"date": "2017.12.13",
+		"blocks": 3774,
+		"accounts": 379352,
+		"transactions": 44717
+	},
+	{
+		"date": "2017.12.14",
+		"blocks": 3856,
+		"accounts": 383004,
+		"transactions": 44140
+	},
+	{
+		"date": "2017.12.15",
+		"blocks": 3348,
+		"accounts": 388903,
+		"transactions": 42141
+	},
+	{
+		"date": "2017.12.16",
+		"blocks": 3350,
+		"accounts": 392773,
+		"transactions": 37762
+	},
+	{
+		"date": "2017.12.17",
+		"blocks": 3431,
+		"accounts": 399704,
+		"transactions": 62165
+	},
+	{
+		"date": "2017.12.18",
+		"blocks": 3598,
+		"accounts": 405124,
+		"transactions": 62516
+	},
+	{
+		"date": "2017.12.19",
+		"blocks": 3424,
+		"accounts": 409360,
+		"transactions": 50697
+	},
+	{
+		"date": "2017.12.20",
+		"blocks": 3431,
+		"accounts": 413364,
+		"transactions": 45450
+	},
+	{
+		"date": "2017.12.21",
+		"blocks": 3620,
+		"accounts": 436575,
+		"transactions": 72085
+	},
+	{
+		"date": "2017.12.22",
+		"blocks": 3574,
+		"accounts": 443717,
+		"transactions": 49069
+	},
+	{
+		"date": "2017.12.23",
+		"blocks": 3535,
+		"accounts": 452387,
+		"transactions": 43781
+	},
+	{
+		"date": "2017.12.24",
+		"blocks": 3362,
+		"accounts": 454264,
+		"transactions": 28261
+	},
+	{
+		"date": "2017.12.25",
+		"blocks": 3309,
+		"accounts": 456295,
+		"transactions": 32091
+	},
+	{
+		"date": "2017.12.26",
+		"blocks": 3424,
+		"accounts": 458591,
+		"transactions": 35608
+	},
+	{
+		"date": "2017.12.27",
+		"blocks": 3468,
+		"accounts": 461902,
+		"transactions": 41004
+	},
+	{
+		"date": "2017.12.28",
+		"blocks": 3698,
+		"accounts": 465184,
+		"transactions": 42551
+	},
+	{
+		"date": "2017.12.29",
+		"blocks": 3669,
+		"accounts": 468863,
+		"transactions": 56594
+	},
+	{
+		"date": "2017.12.30",
+		"blocks": 3671,
+		"accounts": 471725,
+		"transactions": 37075
+	},
+	{
+		"date": "2017.12.31",
+		"blocks": 3751,
+		"accounts": 474698,
+		"transactions": 41062
+	},
+	{
+		"date": "2018.01.01",
+		"blocks": 3533,
+		"accounts": 477545,
+		"transactions": 38818
+	},
+	{
+		"date": "2018.01.02",
+		"blocks": 3995,
+		"accounts": 481231,
+		"transactions": 51933
+	},
+	{
+		"date": "2018.01.03",
+		"blocks": 3925,
+		"accounts": 484844,
+		"transactions": 50212
+	},
+	{
+		"date": "2018.01.04",
+		"blocks": 4018,
+		"accounts": 488947,
+		"transactions": 54719
+	},
+	{
+		"date": "2018.01.05",
+		"blocks": 3554,
+		"accounts": 494082,
+		"transactions": 48510
+	},
+	{
+		"date": "2018.01.06",
+		"blocks": 4107,
+		"accounts": 499046,
+		"transactions": 49350
+	},
+	{
+		"date": "2018.01.07",
+		"blocks": 3958,
+		"accounts": 504170,
+		"transactions": 49644
+	},
+	{
+		"date": "2018.01.08",
+		"blocks": 3982,
+		"accounts": 508838,
+		"transactions": 48178
+	},
+	{
+		"date": "2018.01.09",
+		"blocks": 4005,
+		"accounts": 514583,
+		"transactions": 55340
 	}
 ]
