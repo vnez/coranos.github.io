@@ -2728,6 +2728,132 @@
 		"blocks": 3741,
 		"accounts": 536381,
 		"transactions": 64375
+	},
+	{
+		"date": "2018.01.14",
+		"blocks": 2768,
+		"accounts": 553440,
+		"transactions": 102010
+	},
+	{
+		"date": "2018.01.15",
+		"blocks": 3725,
+		"accounts": 566182,
+		"transactions": 102776
+	},
+	{
+		"date": "2018.01.16",
+		"blocks": 3429,
+		"accounts": 572408,
+		"transactions": 62597
+	},
+	{
+		"date": "2018.01.17",
+		"blocks": 3434,
+		"accounts": 580003,
+		"transactions": 58950
+	},
+	{
+		"date": "2018.01.18",
+		"blocks": 3550,
+		"accounts": 587841,
+		"transactions": 76303
+	},
+	{
+		"date": "2018.01.19",
+		"blocks": 3637,
+		"accounts": 594625,
+		"transactions": 50329
+	},
+	{
+		"date": "2018.01.20",
+		"blocks": 3475,
+		"accounts": 599750,
+		"transactions": 50059
+	},
+	{
+		"date": "2018.01.21",
+		"blocks": 3546,
+		"accounts": 605500,
+		"transactions": 44209
+	},
+	{
+		"date": "2018.01.22",
+		"blocks": 3502,
+		"accounts": 609657,
+		"transactions": 47548
+	},
+	{
+		"date": "2018.01.23",
+		"blocks": 3620,
+		"accounts": 612547,
+		"transactions": 42667
+	},
+	{
+		"date": "2018.01.24",
+		"blocks": 3732,
+		"accounts": 615384,
+		"transactions": 44930
+	},
+	{
+		"date": "2018.01.25",
+		"blocks": 3410,
+		"accounts": 618605,
+		"transactions": 45266
+	},
+	{
+		"date": "2018.01.26",
+		"blocks": 3177,
+		"accounts": 621614,
+		"transactions": 37961
+	},
+	{
+		"date": "2018.01.27",
+		"blocks": 3489,
+		"accounts": 623451,
+		"transactions": 36380
+	},
+	{
+		"date": "2018.01.28",
+		"blocks": 3729,
+		"accounts": 627278,
+		"transactions": 52397
+	},
+	{
+		"date": "2018.01.29",
+		"blocks": 3389,
+		"accounts": 632186,
+		"transactions": 71661
+	},
+	{
+		"date": "2018.01.30",
+		"blocks": 3535,
+		"accounts": 636341,
+		"transactions": 60457
+	},
+	{
+		"date": "2018.01.31",
+		"blocks": 3112,
+		"accounts": 639350,
+		"transactions": 42636
+	},
+	{
+		"date": "2018.02.01",
+		"blocks": 3570,
+		"accounts": 644310,
+		"transactions": 47177
+	},
+	{
+		"date": "2018.02.02",
+		"blocks": 3479,
+		"accounts": 647813,
+		"transactions": 47821
+	},
+	{
+		"date": "2018.02.03",
+		"blocks": 3523,
+		"accounts": 651206,
+		"transactions": 54090
 	}
 
 ]
