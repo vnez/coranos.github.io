@@ -2716,6 +2716,18 @@
 		"blocks": 3816,
 		"accounts": 523683,
 		"transactions": 44332
+	},
+	{
+		"date": "2018.01.12",
+		"blocks": 3644,
+		"accounts": 528653,
+		"transactions": 49684
+	},
+	{
+		"date": "2018.01.13",
+		"blocks": 3741,
+		"accounts": 536381,
+		"transactions": 64375
 	}
 
 ]
