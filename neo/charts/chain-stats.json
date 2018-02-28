@@ -2854,6 +2854,108 @@
 		"blocks": 3523,
 		"accounts": 651206,
 		"transactions": 54090
+	},
+	{
+		"date": "2018.02.04",
+		"blocks": 3457,
+		"accounts": 653634,
+		"transactions": 41242
+	},
+	{
+		"date": "2018.02.05",
+		"blocks": 3639,
+		"accounts": 656864,
+		"transactions": 68577
+	},
+	{
+		"date": "2018.02.06",
+		"blocks": 3569,
+		"accounts": 661132,
+		"transactions": 66650
+	},
+	{
+		"date": "2018.02.07",
+		"blocks": 3526,
+		"accounts": 664528,
+		"transactions": 64195
+	},
+	{
+		"date": "2018.02.08",
+		"blocks": 3521,
+		"accounts": 665868,
+		"transactions": 38051
+	},
+	{
+		"date": "2018.02.09",
+		"blocks": 3259,
+		"accounts": 667893,
+		"transactions": 40871
+	},
+	{
+		"date": "2018.02.10",
+		"blocks": 3399,
+		"accounts": 670938,
+		"transactions": 47488
+	},
+	{
+		"date": "2018.02.11",
+		"blocks": 3542,
+		"accounts": 673787,
+		"transactions": 49129
+	},
+	{
+		"date": "2018.02.12",
+		"blocks": 3468,
+		"accounts": 677372,
+		"transactions": 55432
+	},
+	{
+		"date": "2018.02.13",
+		"blocks": 3472,
+		"accounts": 679786,
+		"transactions": 46487
+	},
+	{
+		"date": "2018.02.14",
+		"blocks": 3471,
+		"accounts": 682247,
+		"transactions": 49946
+	},
+	{
+		"date": "2018.02.15",
+		"blocks": 3479,
+		"accounts": 684626,
+		"transactions": 46031
+	},
+	{
+		"date": "2018.02.16",
+		"blocks": 3577,
+		"accounts": 686911,
+		"transactions": 45325
+	},
+	{
+		"date": "2018.02.17",
+		"blocks": 3392,
+		"accounts": 689065,
+		"transactions": 46658
+	},
+	{
+		"date": "2018.02.18",
+		"blocks": 3367,
+		"accounts": 690923,
+		"transactions": 41734
+	},
+	{
+		"date": "2018.02.19",
+		"blocks": 3255,
+		"accounts": 693355,
+		"transactions": 48559
+	},
+	{
+		"date": "2018.02.20",
+		"blocks": 3583,
+		"accounts": 695747,
+		"transactions": 47058
 	}
 
 ]
