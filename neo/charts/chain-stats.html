@@ -102,29 +102,47 @@ canvas {
         data.labels = [];
         data.datasets = [];
         let blocksDs = {};
-        let txDs = {};
-        let accountDs = {};
+        let txMinerDs = {};
+        let txClaimDs = {};
+        let txContractDs = {};
+        let accountTotalDs = {};
+        let accountActiveDs = {};
 
         blocksDs.label = "blocks";
-        txDs.label = "transactions";
-        accountDs.label = "accounts";
+        txMinerDs.label = "transactions miner";
+        txClaimDs.label = "transactions claim";
+        txContractDs.label = "transactions contract";
+        accountTotalDs.label = "accounts total";
+        accountActiveDs.label = "accounts active";
 
         blocksDs.borderColor = "rgb(0,0,127)";
-        txDs.borderColor = "rgb(0,127,0)";
-        accountDs.borderColor = "rgb(127,0,0)";
+        txMinerDs.borderColor = "rgb(0,127,0)";
+        txClaimDs.borderColor = "rgb(0,127,0)";
+        txContractDs.borderColor = "rgb(0,127,0)";
+        accountTotalDs.borderColor = "rgb(127,0,0)";
+        accountActiveDs.borderColor = "rgb(127,0,0)";
 
         data.datasets.push(blocksDs);
-        data.datasets.push(txDs);
-        data.datasets.push(accountDs);
+        data.datasets.push(txMinerDs);
+        data.datasets.push(txClaimDs);
+        data.datasets.push(txContractDs);
+        data.datasets.push(accountTotalDs);
+        data.datasets.push(accountActiveDs);
 
         for (let ix = 0; ix < data.datasets.length; ix++) {
           data.datasets[ix].data = [];
           data.datasets[ix].backgroundColor = "rgb(255,255,255)";
-          //data.datasets[ix].borderColor = "rgb(0,255,0)";
           data.datasets[ix].steppedLine = false;
           data.datasets[ix].fill = false;
           data.datasets[ix].type = "line";
-          data.datasets[ix].yAxisID = data.datasets[ix].label;
+          if(data.datasets[ix].label.includes(" ")) {
+            let label = data.datasets[ix].label;
+            let spaceIx = label.indexOf(" ");
+            let yAxisID = label.substring(0,spaceIx);
+            data.datasets[ix].yAxisID = yAxisID;
+          } else {
+            data.datasets[ix].yAxisID = data.datasets[ix].label;
+          }
         }
 
         priceChartConfig.data = data;
@@ -133,8 +151,11 @@ canvas {
           let elt = response[ix];
           data.labels[ix] = elt.date;
           blocksDs.data[ix] = elt.blocks;
-          txDs.data[ix] = elt.transactions;
-          accountDs.data[ix] = elt.accounts;
+          txMinerDs.data[ix] = elt.transactions.miner_transaction;
+          txClaimDs.data[ix] = elt.transactions.claim_transaction;
+          txContractDs.data[ix] = elt.transactions.contract_transaction;
+          accountTotalDs.data[ix] = elt.accounts.total;
+          accountActiveDs.data[ix] = elt.accounts.active;
         }
         
         var ctx = document.getElementById("price-canvas").getContext("2d");
