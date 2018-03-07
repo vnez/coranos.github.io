@@ -32,9 +32,11 @@ function preprocess (response) {
 
   var gasData = data.slice();
   var neoData = data.slice();
+  var claimData = data.slice();
 
   response.gasData = gasData;
   response.neoData = neoData;
+  response.claimData = claimData;
 
   gasData.sort(function (a, b) {
     return b.gas - a.gas;
@@ -44,9 +46,18 @@ function preprocess (response) {
     return b.neo - a.neo;
   });
 
+  claimData.sort(function (a, b) {
+    return b.claim_tx - a.claim_tx;
+  });
+
   for (let i = 0; i < data.length; i++) {
     neo_total += data[i].neo;
     gas_total += data[i].gas;
+  }
+
+  for (let i = 0; i < claimData.length; i++) {
+    let claim_tx = claimData[i].claim_tx;
+    claimData[i].claim_tx_rank = i + 1;
   }
 
   for (let i = 0; i < gasData.length; i++) {

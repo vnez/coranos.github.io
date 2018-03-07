@@ -105,29 +105,33 @@ canvas {
         let txMinerDs = {};
         let txClaimDs = {};
         let txContractDs = {};
-        let accountTotalDs = {};
+        //let accountTotalDs = {};
         let accountActiveDs = {};
+        let accountClaimDs = {};
 
         blocksDs.label = "blocks";
         txMinerDs.label = "transactions miner";
         txClaimDs.label = "transactions claim";
         txContractDs.label = "transactions contract";
-        accountTotalDs.label = "accounts total";
+        //accountTotalDs.label = "accounts total";
         accountActiveDs.label = "accounts active";
+        accountClaimDs.label = "accounts claiming gas";
 
         blocksDs.borderColor = "rgb(0,0,127)";
         txMinerDs.borderColor = "rgb(0,127,0)";
         txClaimDs.borderColor = "rgb(0,127,0)";
         txContractDs.borderColor = "rgb(0,127,0)";
-        accountTotalDs.borderColor = "rgb(127,0,0)";
+        //accountTotalDs.borderColor = "rgb(127,0,0)";
         accountActiveDs.borderColor = "rgb(127,0,0)";
+        accountClaimDs.borderColor = "rgb(127,0,0)";
 
         data.datasets.push(blocksDs);
         data.datasets.push(txMinerDs);
         data.datasets.push(txClaimDs);
         data.datasets.push(txContractDs);
-        data.datasets.push(accountTotalDs);
+        //data.datasets.push(accountTotalDs);
         data.datasets.push(accountActiveDs);
+        data.datasets.push(accountClaimDs);
 
         for (let ix = 0; ix < data.datasets.length; ix++) {
           data.datasets[ix].data = [];
@@ -154,8 +158,9 @@ canvas {
           txMinerDs.data[ix] = elt.transactions.miner_transaction;
           txClaimDs.data[ix] = elt.transactions.claim_transaction;
           txContractDs.data[ix] = elt.transactions.contract_transaction;
-          accountTotalDs.data[ix] = elt.accounts.total;
-          accountActiveDs.data[ix] = elt.accounts.active;
+          //accountTotalDs.data[ix] = elt.accounts.total;
+          accountActiveDs.data[ix] = elt.accounts.active.total;
+          accountClaimDs.data[ix] = elt.accounts.active.claim_transaction;
         }
         
         var ctx = document.getElementById("price-canvas").getContext("2d");
