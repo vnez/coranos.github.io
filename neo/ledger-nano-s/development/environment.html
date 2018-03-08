@@ -59,15 +59,15 @@
       <p>
         <code>apt-get install libc6-dev-i386</code>
       <p>
-        <code>apt-get install python</code>
+        <code>apt-get install python3</code>
       <p>
-        <code>apt-get install python-pip</code>
+        <code>apt-get install python3-pip</code>
       <p>
         <code>apt-get install libusb-1.0-0-dev</code>
       <p>
         <code> apt-get install libudev-dev</code>
       <p>
-        <b>for RaiBlocks</b>
+        <b>for Nano(RaiBlocks)</b>
         <code> apt-get install libssl-dev</code>
       <p>
         <code>cd /usr/include/openssl/</code>
@@ -79,6 +79,8 @@
     <li>Install some python pip packages
       <p>
         <code>pip install ledgerblue</code>
+        <b>if you need to get latest from github try: <code>apt-get update</code> <br> <code> apt-get install git</code> <br> <code>pip3
+            install git+https://github.com/LedgerHQ/blue-loader-python.git</code></b>
     </li>
     <li>Follow some setup instructions
       <p>
@@ -130,17 +132,20 @@
     <li>Open up a terminal</li>
     <li>Install some macport packages
       <p>
-        <code>sudo port install python</code>
+        <code>sudo port install python36</code>
       <p>
-        <code>sudo port select --set python python2.7</code>
+        <code>sudo port select --set python python36</code>
         <b>if you get errors saying ledgerblue is not found, run 'which python'. If it points to /usr/bin/python then you aren't set up correctly. It should
           point to opt/local/bin/python</b>
       <p>
-        <code>sudo port install py-pip</code>
+        <code>sudo port install py36-pip</code>
+      <p>
+        <code>sudo port select --set pip pip36</code>
     </li>
     <li>Install some python pip packages
       <p>
         <code>pip install ledgerblue</code>
+        <b>If you need to update it, run <code>pip install ledgerblue --upgrade</code></b>
     </li>
     <li>Setup some environment variables
       <p>
@@ -154,7 +159,7 @@
       <p>
         <code>PATH="/opt/local/bin:$PATH"</code>
       <p>
-        <code> alias python='/opt/local/bin/python2.7'</code>
+        <code>unalias python=</code>
     </li>
     <li>Go to the same directory that the docker image just ran <code>make load</code> (note the ~ at the beginning because we aren't inside docker
       anymore)
