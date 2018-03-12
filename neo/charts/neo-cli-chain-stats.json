@@ -1,5 +1,4 @@
 [
-,
 {"transactions":{"MinerTransaction":1,"IssueTransaction":0,"ClaimTransaction":0,"EnrollmentTransaction":0,"RegisterTransaction":0,"ContractTransaction":0,"StateTransaction":0,"PublishTransaction":0,"InvocationTransaction":0},"height":1,"count":1948973,"bytes":686,"date":"2016-10-16","realTime":"2018-03-05 15:33:31","daily-tx":1,"total-tx":1,"total-seconds":0.018,"total-tx-per-second":55.5555555555556,"daily-seconds":0.018,"daily-ms-start":1520264011081,"daily-ms-end":1520264011099,"daily-tx-per-second":55.5555555555556}
 ,
 {"transactions":{"MinerTransaction":4622,"IssueTransaction":0,"ClaimTransaction":2,"EnrollmentTransaction":0,"RegisterTransaction":1,"ContractTransaction":5,"StateTransaction":0,"PublishTransaction":0,"InvocationTransaction":0},"height":4623,"count":1948973,"bytes":3173932,"date":"2016-10-17","realTime":"2018-03-05 15:33:47","daily-tx":4630,"total-tx":4631,"total-seconds":16.824,"total-tx-per-second":275.261531145982,"daily-seconds":16.806,"daily-ms-start":1520264011099,"daily-ms-end":1520264027905,"daily-tx-per-second":275.496846364394}
