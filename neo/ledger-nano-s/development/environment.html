@@ -6,10 +6,10 @@
 </head>
 <body onload="onLoad();">
   <h1>Environment Setup</h1>
-  <p>2017-09-17
+  <p>2018-03-12
   <p>
     The plan is to build <b>blue-app-neo</b>
-  <p>I am doing development on OSX Sierra. Since OSX does not have a libc6-i386 package, I cannot natively build the Ledger application.
+  <p>I am doing development on OSX High Sierra. Since OSX does not have a libc6-i386 package, I cannot natively build the Ledger application.
   <p>Fortunately, Docker runs on OSX, and Ubuntu runs on docker, so I can build the application inside a docker container.
   <h2>Steps to set up a docker container to build the Ledger Nano S</h2>
   <ol>
@@ -80,7 +80,7 @@
       <p>
         <code>pip install ledgerblue</code>
         <b>if you need to get latest from github try: <code>apt-get update</code> <br> <code> apt-get install git</code> <br> <code>pip3
-            install git+https://github.com/LedgerHQ/blue-loader-python.git</code></b>
+            install git+https://github.com/LedgerHQ/blue-loader-python.git --upgrade</code></b>
     </li>
     <li>Follow some setup instructions
       <p>
@@ -107,9 +107,9 @@
       <p>
         <code>export BOLOS_ENV=/docker-shared/ledger-nano-s</code>
       <p>
-        FOR NANO<br>
+        <br>FOR NANO<br>
         <code>export BOLOS_SDK=/docker-shared/ledger-nano-s/nanos-secure-sdk</code>
-        <br> FOR BLUE<br>
+        <br>FOR BLUE<br>
         <code>export BOLOS_SDK=/docker-shared/ledger-nano-s/blue-secure-sdk</code>
         <br>
       <p>
@@ -159,7 +159,7 @@
       <p>
         <code>PATH="/opt/local/bin:$PATH"</code>
       <p>
-        <code>unalias python=</code>
+        <code>unalias python</code>
     </li>
     <li>Go to the same directory that the docker image just ran <code>make load</code> (note the ~ at the beginning because we aren't inside docker
       anymore)
