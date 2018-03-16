@@ -9,3 +9,13 @@ git submodule update --init --recursive
 cmake -DBOOST_ROOT=/usr/local/boost/ -G "Unix Makefiles"
 make
 ./bananode --daemon
+
+---
+for bananovault run:
+ng serve --open
+
+for the desktop version run:
+npm run desktop
+
+to build the distro run:
+npm run dist-full  --python=python2.7
