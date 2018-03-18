@@ -77,6 +77,14 @@ canvas {
                 display : true,
                 labelString : 'transactions'
               }
+            }, {
+              stacked : false,
+              id : 'transaction_network_fees',
+              position : 'right',
+              scaleLabel : {
+                display : true,
+                labelString : 'transaction_network_fees'
+              }
             } ]
           }
         }
@@ -105,9 +113,10 @@ canvas {
         let txMinerDs = {};
         let txClaimDs = {};
         let txContractDs = {};
-        //let accountTotalDs = {};
         let accountActiveDs = {};
         let accountClaimDs = {};
+        
+        let transactionNetworkFeesDs = {};
 
         blocksDs.label = "blocks";
         txMinerDs.label = "transactions miner";
@@ -116,6 +125,7 @@ canvas {
         //accountTotalDs.label = "accounts total";
         accountActiveDs.label = "accounts active";
         accountClaimDs.label = "accounts claiming gas";
+        transactionNetworkFeesDs.label = "transaction_network_fees";
 
         blocksDs.borderColor = "rgb(0,0,127)";
         txMinerDs.borderColor = "rgb(0,127,0)";
@@ -124,6 +134,7 @@ canvas {
         //accountTotalDs.borderColor = "rgb(127,0,0)";
         accountActiveDs.borderColor = "rgb(127,0,0)";
         accountClaimDs.borderColor = "rgb(127,0,0)";
+        transactionNetworkFeesDs.borderColor = "rgb(0,255,0)";
 
         data.datasets.push(blocksDs);
         data.datasets.push(txMinerDs);
@@ -132,6 +143,7 @@ canvas {
         //data.datasets.push(accountTotalDs);
         data.datasets.push(accountActiveDs);
         data.datasets.push(accountClaimDs);
+        data.datasets.push(transactionNetworkFeesDs);
 
         for (let ix = 0; ix < data.datasets.length; ix++) {
           data.datasets[ix].data = [];
@@ -161,6 +173,16 @@ canvas {
           //accountTotalDs.data[ix] = elt.accounts.total;
           accountActiveDs.data[ix] = elt.accounts.active.total;
           accountClaimDs.data[ix] = elt.accounts.active.claim_transaction;
+          
+          transactionNetworkFeesDs.data[ix] = 0;
+          transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.invocation_transaction;
+          transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.publish_transaction;
+          transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.register_transaction;
+          transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.contract_transaction;
+          transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.issue_transaction;
+          transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.claim_transaction;
+          transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.miner_transaction;
+          transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.enrollment_transaction;
         }
         
         var ctx = document.getElementById("price-canvas").getContext("2d");
