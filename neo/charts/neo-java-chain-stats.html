@@ -115,7 +115,7 @@ canvas {
         let txContractDs = {};
         let accountActiveDs = {};
         let accountClaimDs = {};
-        
+
         let transactionNetworkFeesDs = {};
 
         blocksDs.label = "blocks";
@@ -151,10 +151,10 @@ canvas {
           data.datasets[ix].steppedLine = false;
           data.datasets[ix].fill = false;
           data.datasets[ix].type = "line";
-          if(data.datasets[ix].label.includes(" ")) {
+          if (data.datasets[ix].label.includes(" ")) {
             let label = data.datasets[ix].label;
             let spaceIx = label.indexOf(" ");
-            let yAxisID = label.substring(0,spaceIx);
+            let yAxisID = label.substring(0, spaceIx);
             data.datasets[ix].yAxisID = yAxisID;
           } else {
             data.datasets[ix].yAxisID = data.datasets[ix].label;
@@ -173,7 +173,7 @@ canvas {
           //accountTotalDs.data[ix] = elt.accounts.total;
           accountActiveDs.data[ix] = elt.accounts.active.total;
           accountClaimDs.data[ix] = elt.accounts.active.claim_transaction;
-          
+
           transactionNetworkFeesDs.data[ix] = 0;
           transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.invocation_transaction;
           transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.publish_transaction;
@@ -183,8 +183,10 @@ canvas {
           transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.claim_transaction;
           transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.miner_transaction;
           transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.enrollment_transaction;
+          transactionNetworkFeesDs.data[ix] = transactionNetworkFeesDs.data[ix] / 100000000;
+          transactionNetworkFeesDs.data[ix] = transactionNetworkFeesDs.data[ix].toFixed(0);
         }
-        
+
         var ctx = document.getElementById("price-canvas").getContext("2d");
         window.myLine = new Chart(ctx, priceChartConfig);
       }
