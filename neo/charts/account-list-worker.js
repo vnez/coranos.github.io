@@ -95,6 +95,11 @@ function preprocess (response) {
     } else {
       data[i].first_ts = formatDate(new Date(data[i].first_ts * 1000));
     }
+    if (data[i].last_ts == 0) {
+      data[i].last_ts = "Low Value";
+    } else {
+      data[i].last_ts = formatDate(new Date(data[i].last_ts * 1000));
+    }
   }
 }
 onmessage = function (e) {
