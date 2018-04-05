@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Account Diff Chart</title>
+<title>NEO Java Chain Stats Chart</title>
 <script src="../js-lib/chart-2.6.0.js"></script>
 <script src="../js-lib/jquery-3.2.1.js"></script>
 <script src="../js-lib/load-json.js"></script>
@@ -85,6 +85,22 @@ canvas {
                 display : true,
                 labelString : 'transaction_network_fees'
               }
+            }, {
+              stacked : false,
+              id : 'max_block_bin',
+              position : 'left',
+              scaleLabel : {
+                display : true,
+                labelString : 'max tx in block'
+              }
+            }, {
+              stacked : false,
+              id : 'max_block_bin_count',
+              position : 'left',
+              scaleLabel : {
+                display : true,
+                labelString : 'num blocks at max txs'
+              }
             } ]
           }
         }
@@ -117,6 +133,8 @@ canvas {
         let accountClaimDs = {};
 
         let transactionNetworkFeesDs = {};
+        let blockBinMaxSizeDs = {};
+        let blockBinMaxSizeCountDs = {};
 
         blocksDs.label = "blocks";
         txMinerDs.label = "transactions miner";
@@ -126,6 +144,8 @@ canvas {
         accountActiveDs.label = "accounts active";
         accountClaimDs.label = "accounts claiming gas";
         transactionNetworkFeesDs.label = "transaction_network_fees";
+        blockBinMaxSizeDs.label = "max_block_bin";
+        blockBinMaxSizeCountDs.label = "max_block_bin_count";
 
         blocksDs.borderColor = "rgb(0,0,127)";
         txMinerDs.borderColor = "rgb(0,127,0)";
@@ -135,8 +155,12 @@ canvas {
         accountActiveDs.borderColor = "rgb(127,0,0)";
         accountClaimDs.borderColor = "rgb(127,0,0)";
         transactionNetworkFeesDs.borderColor = "rgb(0,255,0)";
+        blockBinMaxSizeDs.borderColor = "rgb(0,0,127)";
+        blockBinMaxSizeCountDs.borderColor = "rgb(0,0,127)";
 
         data.datasets.push(blocksDs);
+        data.datasets.push(blockBinMaxSizeDs);
+        data.datasets.push(blockBinMaxSizeCountDs);
         data.datasets.push(txMinerDs);
         data.datasets.push(txClaimDs);
         data.datasets.push(txContractDs);
@@ -185,6 +209,17 @@ canvas {
           transactionNetworkFeesDs.data[ix] += elt.transaction_network_fees.enrollment_transaction;
           transactionNetworkFeesDs.data[ix] = transactionNetworkFeesDs.data[ix] / 100000000;
           transactionNetworkFeesDs.data[ix] = transactionNetworkFeesDs.data[ix].toFixed(0);
+
+          let block_bins = elt.block_bins;
+          let max_bin = "0";
+          for ( let block_bin in block_bins) {
+            if (parseInt(block_bin) > parseInt(max_bin)) {
+              max_bin = block_bin;
+            }
+          }
+
+          blockBinMaxSizeDs.data[ix] = parseInt(max_bin);
+          blockBinMaxSizeCountDs.data[ix] = block_bins[max_bin];
         }
 
         var ctx = document.getElementById("price-canvas").getContext("2d");
