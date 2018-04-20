@@ -2,9 +2,23 @@
 <html>
 <meta charset="utf-8" />
 <head>
-<title>NEO Ledger Nano S Hardware Wallet</title>
+<title>Banano Account History</title>
 </head>
+<!-- check out erd.html for the graphing code -->
 <body onload="onLoad();">
+  <div class="erd" id="banano"></div>
+  <script src="../../js-lib/jquery-3.2.1.js"></script>
+  <script src="../../js-lib/cytoscape-3.1.4.js"></script>
+  <script src="../../js-lib/cytoscape-cose-bilkent-3.1.4.js"></script>
+  <script src="../../js-lib/jquery-qtip-2.2.0.min.js"></script>
+  <script src="../../js-lib/cytoscape-qtip-2.7.0.js"></script>
+  <script src="../../js-lib/load-json.js"></script>
+  <script src="../../js-lib/erd.js"></script>
+  <script>
+    function onLoad() {
+      loadJson("account-history.json", loadErdCallback);
+    };
+  </script>
   <hr>
   <script src="../js-lib/google-tracking.js"></script>
   <script>

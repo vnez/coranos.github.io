@@ -1,7 +1,7 @@
-importScripts('../js-lib/json-table-worker.js');
-importScripts('../js-lib/json-table.js');
-importScripts('../js-lib/workerFakeDOM.js');
-importScripts('../js-lib/jquery-3.2.1.js');
+importScripts('../../js-lib/json-table-worker.js');
+importScripts('../../js-lib/json-table.js');
+importScripts('../../js-lib/workerFakeDOM.js');
+importScripts('../../js-lib/jquery-3.2.1.js');
 
 function numberWithCommas (x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
