@@ -3,30 +3,117 @@
 <meta charset="utf-8" />
 <head>
 <title>Banano Account History</title>
+<style type="text/css">
+.sankey {
+  height: 97vh;
+  width: 97vw;
+  border-style: solid;
+}
+
+element {
+  fill: rgb(31, 119, 180);
+}
+</style>
 </head>
 <!-- check out erd.html for the graphing code -->
 <body onload="onLoad();">
-  <div class="erd" id="banano"></div>
+  <div id="sankey" class="sankey"></div>
   <script src="../../js-lib/jquery-3.2.1.js"></script>
-  <script src="../../js-lib/cytoscape-3.1.4.js"></script>
-  <script src="../../js-lib/cytoscape-cose-bilkent-3.1.4.js"></script>
-  <script src="../../js-lib/jquery-qtip-2.2.0.min.js"></script>
-  <script src="../../js-lib/cytoscape-qtip-2.7.0.js"></script>
-  <script src="../../js-lib/load-json.js"></script>
-  <script src="../../js-lib/erd.js"></script>
+  <script src="../../js-lib/d3-4.6.0.js"></script>
+  <script src="../../js-lib/d3-sankey-diagram.js"></script>
   <script>
-    function onLoad() {
-      loadJson("account-history.json", loadErdCallback);
-    };
-  </script>
+      function vh (v) {
+        var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+        return (v * h) / 100;
+      }
+
+      function vw (v) {
+        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+        return Math.round((v * w) / 100);
+      }
+
+      function vmin (v) {
+        return Math.min(vh(v), vw(v));
+      }
+
+      function vmax (v) {
+        return Math.max(vh(v), vw(v));
+      }
+      function onLoad () {
+        d3.json("account-history.json", function (response) {
+          response.results.sort(function (a, b) {
+            return b.balance - a.balance;
+          });
+
+          const nodeList = response.results.splice(0, 60);
+          //const nodeList = response.results.splice(0, 10);
+
+          //console.log(response);
+
+          const sankeyData = {};
+          sankeyData.links = [];
+          sankeyData.groups = [];
+          sankeyData.nodes = [];
+          sankeyData.order = [];
+
+          const accountSet = new Set();
+          const accountToIdMap = {};
+          for (let nodeIx = 0; nodeIx < nodeList.length; nodeIx++) {
+            const node = nodeList[nodeIx];
+            //console.log("node " + nodeIx + " of " + nodeList.length);
+            //console.log(node);
+            accountSet.add(node.account);
+            accountToIdMap[node.account] = nodeIx.toString();
+          }
+
+          for (let nodeIx = 0; nodeIx < nodeList.length; nodeIx++) {
+            const sourceNode = nodeList[nodeIx];
+            const nodeElt = {};
+            nodeElt.id = accountToIdMap[sourceNode.account];
+            nodeElt.title = sourceNode.account;
+            nodeElt.direction = "r"; //R or L
+            sankeyData.nodes.push(nodeElt);
+
+            //console.log("examining sourceNode ");
+            //console.log(sourceNode);
+            for ( var destAccount in sourceNode.history) {
+              if (sourceNode.history.hasOwnProperty(destAccount)) {
+                var destBalance = sourceNode.history[destAccount];
+                //console.log(destAccount, destBalance);
+                if (accountSet.has(destAccount) && (sourceNode.account != destAccount)) {
+                  const linkElt = {};
+                  linkElt.source = accountToIdMap[sourceNode.account];
+                  linkElt.target = accountToIdMap[destAccount];
+                  linkElt.value = destBalance;
+                  sankeyData.links.push(linkElt);
+                } else {
+                  //console.log("skipping account " + destAccount);
+                }
+              }
+            }
+          }
+
+          var width = vw(97);
+          var height = vh(105);
+
+          var svg = d3.select("#sankey").append("svg");
+          svg.attr("viewbox", "0 0 " + width + " " + height).attr("width", width).attr("height", height);
+
+          var layout = d3.sankey().extent([ [ 400, height*-0.1 ], [ height*1.0, height*1.0 ] ]);
+
+          var diagram = d3.sankeyDiagram().linkColor(function (d) {
+            return d.color;
+          });
+
+          //layout.ordering(sankeyData.order);
+          svg.datum(layout(sankeyData)).call(diagram);
+        });
+      };
+    </script>
   <hr>
   <script src="../js-lib/google-tracking.js"></script>
   <script>
       callGoogleTracker();
-
-      function onLoad () {
-
-      }
     </script>
 </body>
 </html>
