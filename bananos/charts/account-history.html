@@ -99,7 +99,7 @@ element {
           var svg = d3.select("#sankey").append("svg");
           svg.attr("viewbox", "0 0 " + width + " " + height).attr("width", width).attr("height", height);
 
-          var layout = d3.sankey().extent([ [ 400, height*-0.1 ], [ height*1.0, height*1.0 ] ]);
+          var layout = d3.sankey().extent([ [ 400, height*-0.08 ], [ height*1.0, height*1.0 ] ]);
 
           var diagram = d3.sankeyDiagram().linkColor(function (d) {
             return d.color;
