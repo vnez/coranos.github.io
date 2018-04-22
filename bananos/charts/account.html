@@ -1,9 +1,9 @@
 <!DOCTYPE html5>
 <html>
-<meta charset="utf-8" />
+<meta charset='utf-8' />
 <head>
 <title>Banano Account List</title>
-<style type="text/css">
+<style type='text/css'>
 .solid {
   border: solid;
   border-width: 0.5px;
@@ -16,58 +16,73 @@ form {
 }
 </style>
 </head>
-<body onload="onLoad();">
-  <table id="dataTable" class="solid">
-    <thead class="solid">
+<body onload='onLoad();'>
+  <table id='dataTable' class='solid'>
+    <thead class='solid'>
     </thead>
-    <tbody class="solid">
+    <tbody class='solid'>
     </tbody>
   </table>
   <hr>
-  <script src="../../js-lib/jquery-3.2.1.js"></script>
-  <script src="../../js-lib/load-json.js"></script>
-  <script src="../../js-lib/json-table.js"></script>
+  <script src='../../js-lib/jquery-3.2.1.js'></script>
+  <script src='../../js-lib/load-json.js'></script>
+  <script src='../../js-lib/json-table.js'></script>
   <script>
       function numberWithCommas (x) {
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
       }
       function onLoad () {
-        jsonTable("#dataTable", {
-          head : [ 'Banano Rank', 'Account', 'Banano' ],
-          thClass : "solid",
-          trClass : "solid",
+        jsonTable('#dataTable', {
+          head : [ 'Banano Rank', 'Account', 'Banano','Reddit','Discord' ],
+          thClass : 'solid',
+          trClass : 'solid',
           sortTable : false
         });
 
         let options = {};
-        options.json = [ 'rank', 'account', 'balance' ];
+        options.json = [ 'rank', 'account', 'balance','reddit','discord' ];
 
         $.ajaxSetup({
           beforeSend : function (xhr) {
             if (xhr.overrideMimeType) {
-              xhr.overrideMimeType("application/json");
+              xhr.overrideMimeType('application/json');
             }
           }
         });
-        $.getJSON("account-history.json", function (response) {
-          let table = $("#dataTable").find('tbody');
+        $.getJSON('account-history.json', function (response) {
+          let table = $('#dataTable').find('tbody');
           table.empty();
 
           response.results.sort(function (a, b) {
             return b.balance - a.balance;
           });
-
+          
+          const redditAccount = 'ban_3redditpxsum1uizb8o8is9kau7uckzpts7oddoz6j4gzorxc8eaodkjzxqb';
+          const discordAccount = 'ban_3disc5557sb9ri99h7czmn6ms5kcfsafnsxekarg1pp9f3a1ik4ndjcb9cod';
+          let redditHistory;
+          let discordHistory;
+          for (let dataIx = 0; dataIx < response.results.length; dataIx++) {
+            if(response.results[dataIx].account == redditAccount) {
+              redditHistory = response.results[dataIx].history;
+            }
+            if(response.results[dataIx].account == discordAccount) {
+              discordHistory = response.results[dataIx].history;
+            }
+          }
+          
           for (let dataIx = 0; dataIx < response.results.length; dataIx++) {
             response.results[dataIx].rank = dataIx + 1;
             response.results[dataIx].balance = numberWithCommas(response.results[dataIx].balance);
+            response.results[dataIx].reddit = redditHistory.hasOwnProperty(response.results[dataIx].account);
+            response.results[dataIx].discord = discordHistory.hasOwnProperty(response.results[dataIx].account);
           }
 
-          let row = makeRow(response, options, "solid", "solid");
+          let row = makeRow(response, options, 'solid', 'solid');
           table.append(row);
         });
       }
     </script>
-  <script src="../js-lib/google-tracking.js"></script>
+  <script src='../js-lib/google-tracking.js'></script>
   <script>
       callGoogleTracker();
     </script>
