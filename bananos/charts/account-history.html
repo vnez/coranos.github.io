@@ -3,118 +3,229 @@
 <meta charset="utf-8" />
 <head>
 <title>Banano Account History</title>
-<style type="text/css">
-.sankey {
-  height: 97vh;
-  width: 97vw;
-  border-style: solid;
-}
-
-element {
-  fill: rgb(31, 119, 180);
-}
-</style>
 </head>
-<!-- check out erd.html for the graphing code -->
 <body onload="onLoad();">
-  <div id="sankey" class="sankey"></div>
+  <div id="chart"></div>
   <script src="../../js-lib/jquery-3.2.1.js"></script>
   <script src="../../js-lib/d3-4.6.0.js"></script>
-  <script src="../../js-lib/d3-sankey-diagram.js"></script>
   <script>
-      function vh (v) {
-        var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        return (v * h) / 100;
-      }
 
-      function vw (v) {
-        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-        return Math.round((v * w) / 100);
-      }
+var svg;
 
-      function vmin (v) {
-        return Math.min(vh(v), vw(v));
-      }
+var opacityDefault= 0.8;
 
-      function vmax (v) {
-        return Math.max(vh(v), vw(v));
-      }
-      function onLoad () {
-        d3.json("account-history.json", function (response) {
-          response.results.sort(function (a, b) {
-            return b.balance - a.balance;
-          });
 
-          const nodeList = response.results.splice(0, Math.round(50*1.25));
-          //const nodeList = response.results.splice(0, 10);
+function numberWithCommas (x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
 
-          //console.log(response);
+function onLoad () {
+  
+var margin = {left:90, top:90, right:90, bottom:90},
+    width =  1000 - margin.left - margin.right, // more flexibility: Math.min(window.innerWidth, 1000)
+    height =  1000 - margin.top - margin.bottom, // same: Math.min(window.innerWidth, 1000)
+    innerRadius = Math.min(width, height) * .39,
+    outerRadius = innerRadius * 1.1;
 
-          const sankeyData = {};
-          sankeyData.links = [];
-          sankeyData.groups = [];
-          sankeyData.nodes = [];
-          sankeyData.order = [];
+d3.json("account-history.json", function(response) {
+  response.results.sort(function (a, b) {
+    return b.balance - a.balance;
+  });
 
-          const accountSet = new Set();
-          const accountToIdMap = {};
-          for (let nodeIx = 0; nodeIx < nodeList.length; nodeIx++) {
-            const node = nodeList[nodeIx];
-            //console.log("node " + nodeIx + " of " + nodeList.length);
-            //console.log(node);
-            accountSet.add(node.account);
-            accountToIdMap[node.account] = nodeIx.toString();
-          }
+  const nodeList = response.results.splice(0, 40);
+  
+  
+  var indexByName = {},
+      nameByIndex = {},
+      matrix = [],
+      n = 0;
 
-          for (let nodeIx = 0; nodeIx < nodeList.length; nodeIx++) {
-            const sourceNode = nodeList[nodeIx];
-            const nodeElt = {};
-            nodeElt.id = accountToIdMap[sourceNode.account];
-            //nodeElt.title = sourceNode.account;
-            nodeElt.title = sourceNode.account.substring(4,16);
-            nodeElt.direction = "r"; //R or L
-            sankeyData.nodes.push(nodeElt);
+  var names = [];
 
-            //console.log("examining sourceNode ");
-            //console.log(sourceNode);
-            for ( var destAccount in sourceNode.history) {
-              if (sourceNode.history.hasOwnProperty(destAccount)) {
-                var destBalance = sourceNode.history[destAccount];
-                //console.log(destAccount, destBalance);
-                if (accountSet.has(destAccount) && (sourceNode.account != destAccount)) {
-                  const linkElt = {};
-                  linkElt.source = accountToIdMap[sourceNode.account];
-                  linkElt.target = accountToIdMap[destAccount];
-                  linkElt.value = destBalance;
-                  sankeyData.links.push(linkElt);
-                } else {
-                  //console.log("skipping account " + destAccount);
-                }
-              }
-            }
-          }
+  // Returns the Flare package name for the given class name.
+  function name(account) {
+    return account.substring(0,12);
+  }
 
-          var width = vw(97);
-          var height = vh(105);
+  // Compute a unique index for each package name.
+  nodeList.forEach(function(d) {
+    var nameOfD = name(d.account);
+    if (!(nameOfD in indexByName)) {
+      nameByIndex[n] = nameOfD;
+      indexByName[nameOfD] = n++;
+      names.push(nameOfD + " " + numberWithCommas(d.balance));
+    }
+  });
 
-          var svg = d3.select("#sankey").append("svg");
-          svg.attr("viewbox", "0 0 " + width + " " + height).attr("width", width).attr("height", height);
+  // Construct a square matrix counting package imports.
+  nodeList.forEach(function(d) {
+    var source = indexByName[name(d.account)],
+        row = matrix[source];
+    if (!row) {
+     row = matrix[source] = [];
+     for (var i = -1; ++i < n;) row[i] = 0;
+    }
+    for (const [key, value] of Object.entries(d.history)) {
+      //row[indexByName[name(key)]]+= value;
+      row[indexByName[name(key)]]+= parseInt(value);
+    }
+  });
 
-          var layout = d3.sankey().extent([ [ 400, height*-0.08 ], [ height*1.0, height*1.0 ] ]);
 
-          var diagram = d3.sankeyDiagram().linkColor(function (d) {
-            return d.color;
-          });
+  var colors = ["#301E1E", "#083E77", "#342350", "#567235", "#8B161C", "#DF7C00"];
+  
+  ////////////////////////////////////////////////////////////
+  /////////// Create scale and layout functions //////////////
+  ////////////////////////////////////////////////////////////
 
-          //layout.ordering(sankeyData.order);
-          svg.datum(layout(sankeyData)).call(diagram);
-        });
-      };
-    </script>
-  <hr>
-  <script src="../js-lib/google-tracking.js"></script>
-  <script>
-      callGoogleTracker();
-    </script>
+  var colors = d3.scaleOrdinal()
+      .domain(d3.range(names.length))
+    .range(colors);
+
+  var chord = d3.chord()
+    .padAngle(.15)
+    .sortChords(d3.descending)
+
+    var arc = d3.arc()
+    .innerRadius(innerRadius*1.01)
+    .outerRadius(outerRadius);
+
+  var path = d3.ribbon()
+  .radius(innerRadius);
+
+////////////////////////////////////////////////////////////
+////////////////////// Create SVG //////////////////////////
+////////////////////////////////////////////////////////////
+
+svg = d3.select("#chart").append("svg")
+  .attr("width", width + margin.left + margin.right)
+  .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+  .attr("transform", "translate(" + (width/2 + margin.left) + "," + (height/2 + margin.top) + ")")
+  .datum(chord(matrix));
+
+////////////////////////////////////////////////////////////
+////////////////// Draw outer Arcs /////////////////////////
+////////////////////////////////////////////////////////////
+
+var outerArcs = svg.selectAll("g.group")
+  .data(function(chords) { return chords.groups; })
+  .enter().append("g")
+  .attr("class", "group")
+  .on("mouseover", fade(.1))
+  .on("mouseout", fade(opacityDefault))
+
+  // text popups
+  .on("click", mouseoverChord)
+  .on("mouseout", mouseoutChord);
+
+outerArcs.append("path")
+  .style("fill", function(d) { return colors(d.index); })
+  .attr("id", function(d, i) { return "group" + d.index; })
+  .attr("d", arc);
+  
+ outerArcs.append("text")
+         .attr("x", 6)
+        .attr("dy", 15)
+      .append("textPath")
+        .attr("xlink:href", function(d) { return "#group" + d.index; })
+        .text(function(chords, i){return names[i];})
+        .style("fill", "white");
+  
+
+////////////////////////////////////////////////////////////
+////////////////////// Append names ////////////////////////
+////////////////////////////////////////////////////////////
+
+//Append the label names on the outside
+outerArcs.append("text")
+  .each(function(d) { d.angle = (d.startAngle + d.endAngle) / 2; })
+  .attr("dy", ".35em")
+  .attr("class", "titles")
+  .attr("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
+  .attr("transform", function(d) {
+    return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")"
+    + "translate(" + (outerRadius + 10) + ")"
+    + (d.angle > Math.PI ? "rotate(180)" : "");
+  })
+  .text(function(d,i) { return names[i]; });
+  
+////////////////////////////////////////////////////////////
+////////////////// Draw inner chords ///////////////////////
+////////////////////////////////////////////////////////////
+
+svg.selectAll("path.chord")
+  .data(function(chords) { return chords; })
+  .enter().append("path")
+  .attr("class", "chord")
+  .style("fill", function(d) { return colors(d.source.index); })
+  .style("opacity", opacityDefault)
+  .attr("d", path);
+});
+
+////////////////////////////////////////////////////////////
+////////////////// Extra Functions /////////////////////////
+////////////////////////////////////////////////////////////
+
+function popup() {
+  return function(d,i) {
+    console.log("love");
+  };
+}//popup
+
+//Returns an event handler for fading a given chord group.
+function fade(opacity) {
+  return function(d,i) {
+    svg.selectAll("path.chord")
+        .filter(function(d) { return d.source.index != i && d.target.index != i; })
+    .transition()
+        .style("opacity", opacity);
+  };
+}//fade
+
+  //Highlight hovered over chord
+function mouseoverChord(d,i) {
+
+  //Decrease opacity to all
+  svg.selectAll("path.chord")
+    .transition()
+    .style("opacity", 0.1);
+  //Show hovered over chord with full opacity
+  d3.select(this)
+    .transition()
+        .style("opacity", 1);
+
+  //Define and show the tooltip over the mouse location
+  $(this).popover({
+    //placement: 'auto top',
+    title: 'test',
+    placement: 'right',
+    container: 'body',
+    animation: false,
+    offset: "20px -100px",
+    followMouse: true,
+    trigger: 'click',
+    html : true,
+    content: function() {
+      return "<p style='font-size: 11px; text-align: center;'><span style='font-weight:900'>"  +
+           "</span> text <span style='font-weight:900'>"  +
+           "</span> folgt hier <span style='font-weight:900'>" + "</span> movies </p>"; }
+  });
+  $(this).popover('show');
+}
+//Bring all chords back to default opacity
+function mouseoutChord(d) {
+  //Hide the tooltip
+  $('.popover').each(function() {
+    $(this).remove();
+  })
+  //Set opacity back to default for all
+  svg.selectAll("path.chord")
+    .transition()
+    .style("opacity", opacityDefault);
+  }      //function mouseoutChord
+
+}
+</script>
 </body>
 </html>
