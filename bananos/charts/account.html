@@ -33,14 +33,14 @@ form {
       }
       function onLoad () {
         jsonTable('#dataTable', {
-          head : [ 'Banano Rank', 'Account', 'Banano','Reddit','Discord' ],
+          head : [ 'Banano Rank', 'Account', 'Banano','Banano Out','Reddit','Discord' ],
           thClass : 'solid',
           trClass : 'solid',
           sortTable : false
         });
 
         let options = {};
-        options.json = [ 'rank', 'account', 'balance','reddit','discord' ];
+        options.json = [ 'rank', 'account', 'balance','balanceOut','reddit','discord' ];
 
         $.ajaxSetup({
           beforeSend : function (xhr) {
@@ -75,6 +75,11 @@ form {
             response.results[dataIx].balance = numberWithCommas(response.results[dataIx].balance);
             response.results[dataIx].reddit = redditHistory.hasOwnProperty(response.results[dataIx].account);
             response.results[dataIx].discord = discordHistory.hasOwnProperty(response.results[dataIx].account);
+            var balanceOut = 0;
+            for (const [key, value] of Object.entries(response.results[dataIx].history)) {
+                balanceOut += parseInt(value);
+            }
+            response.results[dataIx].balanceOut = numberWithCommas(balanceOut);
           }
 
           let row = makeRow(response, options, 'solid', 'solid');
