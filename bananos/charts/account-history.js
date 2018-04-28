@@ -16,7 +16,7 @@ function onLoad() {
         innerRadius = Math.min(width, height) * .35,
         outerRadius = innerRadius * 1.1;
 
-    d3.json("account-history.json", function(response) {
+    d3.json('account-history.json', function(response) {
         var nodeList = getNodeList(response);
         
         var indexByName = {},
@@ -34,7 +34,7 @@ function onLoad() {
               if (!(nameOfD in indexByName)) {
                   nameByIndex[n] = nameOfD;
                   indexByName[nameOfD] = n++;
-                  const longNameOfD = nameOfD + " " + formatBytes3(d.balance);
+                  const longNameOfD = nameOfD + ' ' + formatBytes3(d.balance);
                   names.push(longNameOfD);
                   shortnames.push(nameOfD);
                   console.log(longNameOfD);
@@ -55,16 +55,16 @@ function onLoad() {
             for (const [key, value] of Object.entries(d.history)) {
               const nameOfD = name(key);
               const balance = parseInt(value);
-              const longNameOfD = name(d.account) + "->" + nameOfD + " " + formatBytes3(balance);
+              const longNameOfD = name(d.account) + '->' + nameOfD + ' ' + formatBytes3(balance);
               console.log(longNameOfD);
                 // row[indexByName[name(key)]]+= value;
                 row[indexByName[name(key)]] += balance;
             }
         });
 
-        console.log(matrix);
+        //console.log(matrix);
 
-        var colors = ["#301E1E", "#083E77", "#342350", "#567235", "#8B161C", "#DF7C00"];
+        var colors = ['#301E1E', '#083E77', '#342350', '#567235', '#8B161C', '#DF7C00'];
 
         // //////////////////////////////////////////////////////////
         // ///////// Create scale and layout functions //////////////
@@ -88,52 +88,52 @@ function onLoad() {
         // //////////////////// Create SVG //////////////////////////
         // //////////////////////////////////////////////////////////
 
-        svg = d3.select("#chart").append("svg")
-            .attr("width", width + margin.left + margin.right)
-            .attr("height", height + margin.top + margin.bottom)
-            .append("g")
-            .attr("transform", "translate(" + (width / 2 + margin.left) + "," + (height / 2 + margin.top) + ")")
+        svg = d3.select('#chart').append('svg')
+            .attr('width', width + margin.left + margin.right)
+            .attr('height', height + margin.top + margin.bottom)
+            .append('g')
+            .attr('transform', 'translate(' + (width / 2 + margin.left) + ',' + (height / 2 + margin.top) + ')')
             .datum(chord(matrix));
 
         // //////////////////////////////////////////////////////////
         // //////////////// Draw outer Arcs /////////////////////////
         // //////////////////////////////////////////////////////////
 
-        var outerArcs = svg.selectAll("g.group")
+        var outerArcs = svg.selectAll('g.group')
             .data(function(chords) {
                 return chords.groups;
             })
-            .enter().append("g")
-            .attr("class", "group")
-            .on("mouseover", fade(.1))
-            .on("mouseout", fade(opacityDefault))
+            .enter().append('g')
+            .attr('class', 'group')
+            .on('mouseover', fade(.1))
+            .on('mouseout', fade(opacityDefault))
 
             // text popups
-            .on("click", mouseoverChord)
-            .on("mouseout", mouseoutChord);
+            .on('click', mouseoverChord)
+            .on('mouseout', mouseoutChord);
 
-        outerArcs.append("path")
-            .style("fill", function(d) {
+        outerArcs.append('path')
+            .style('fill', function(d) {
                 return colors(d.index);
             })
-            .attr("id", function(d, i) {
-                return "group" + d.index;
+            .attr('id', function(d, i) {
+                return 'group' + d.index;
             })
-            .attr("d", arc);
+            .attr('d', arc);
 
 
 
-        outerArcs.append("text")
-            .attr("x", 6)
-            .attr("dy", 15)
-            .append("textPath")
-            .attr("xlink:href", function(d) {
-                return "#group" + d.index;
+        outerArcs.append('text')
+            .attr('x', 6)
+            .attr('dy', 15)
+            .append('textPath')
+            .attr('xlink:href', function(d) {
+                return '#group' + d.index;
             })
             .text(function(chords, i) {
                 return shortnames[i];
             })
-            .style("fill", "white");
+            .style('fill', 'white');
 
 
         // //////////////////////////////////////////////////////////
@@ -141,19 +141,19 @@ function onLoad() {
         // //////////////////////////////////////////////////////////
 
         // Append the label names on the outside
-        outerArcs.append("text")
+        outerArcs.append('text')
             .each(function(d) {
                 d.angle = (d.startAngle + d.endAngle) / 2;
             })
-            .attr("dy", ".35em")
-            .attr("class", "titles")
-            .attr("text-anchor", function(d) {
-                return d.angle > Math.PI ? "end" : null;
+            .attr('dy', '.35em')
+            .attr('class', 'titles')
+            .attr('text-anchor', function(d) {
+                return d.angle > Math.PI ? 'end' : null;
             })
-            .attr("transform", function(d) {
-                return "rotate(" + (d.angle * 180 / Math.PI - 90) + ")" +
-                    "translate(" + (outerRadius + 10) + ")" +
-                    (d.angle > Math.PI ? "rotate(180)" : "");
+            .attr('transform', function(d) {
+                return 'rotate(' + (d.angle * 180 / Math.PI - 90) + ')' +
+                    'translate(' + (outerRadius + 10) + ')' +
+                    (d.angle > Math.PI ? 'rotate(180)' : '');
             })
             .text(function(d, i) {
                 return names[i];
@@ -163,17 +163,17 @@ function onLoad() {
         // //////////////// Draw inner chords ///////////////////////
         // //////////////////////////////////////////////////////////
 
-        svg.selectAll("path.chord")
+        svg.selectAll('path.chord')
             .data(function(chords) {
                 return chords;
             })
-            .enter().append("path")
-            .attr("class", "chord")
-            .style("fill", function(d) {
+            .enter().append('path')
+            .attr('class', 'chord')
+            .style('fill', function(d) {
                 return colors(d.source.index);
             })
-            .style("opacity", opacityDefault)
-            .attr("d", path);
+            .style('opacity', opacityDefault)
+            .attr('d', path);
     });
 
     // //////////////////////////////////////////////////////////
@@ -182,19 +182,19 @@ function onLoad() {
 
     function popup() {
         return function(d, i) {
-            console.log("love");
+            console.log('love');
         };
     } // popup
 
     // Returns an event handler for fading a given chord group.
     function fade(opacity) {
         return function(d, i) {
-            svg.selectAll("path.chord")
+            svg.selectAll('path.chord')
                 .filter(function(d) {
                     return d.source.index != i && d.target.index != i;
                 })
                 .transition()
-                .style("opacity", opacity);
+                .style('opacity', opacity);
         };
     } // fade
 
@@ -202,20 +202,20 @@ function onLoad() {
     function mouseoverChord(d, i) {
 
         // Decrease opacity to all
-        svg.selectAll("path.chord")
+        svg.selectAll('path.chord')
             .transition()
-            .style("opacity", 0.1);
+            .style('opacity', 0.1);
         // Show hovered over chord with full opacity
         d3.select(this)
             .transition()
-            .style("opacity", 1);
+            .style('opacity', 1);
     }
     // Bring all chords back to default opacity
     function mouseoutChord(d) {
         // Set opacity back to default for all
-        svg.selectAll("path.chord")
+        svg.selectAll('path.chord')
             .transition()
-            .style("opacity", opacityDefault);
+            .style('opacity', opacityDefault);
     } // function mouseoutChord
 
 }

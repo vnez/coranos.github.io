@@ -1,12 +1,12 @@
 function onLoad() {
     // Variables
-    var width = 1000;
-    var height = 1000;
+    var width = 800;
+    var height = 800;
     var radius = Math.min(width, height) / 2;
     var color = d3.scaleOrdinal(d3.schemeCategory20b);
 
     // Size our <svg> element, add a <g> element, and move translate 0,0 to the center of the element.
-    var g = d3.select('svg')
+    var g = d3.select('#chart').append('svg')
         .attr('width', width)
         .attr('height', height)
         .append('g')
@@ -17,62 +17,144 @@ function onLoad() {
         .size([2 * Math.PI, radius]);
 
     // Get the data from our JSON file
-// d3.json("data.json", function(response) {
-// var nodeData = response
-    d3.json("account-history.json", function(response) {
+    const tier0Set = new Set();
+    tier0Set.add('ban_1bananobh5rat99qfgt1ptpieie5swmoth87thi74qgbfrij7dcgjiij94xr');
+    tier0Set.add('ban_3fundbxxzrzfy3k9jbnnq8d44uhu5sug9rkh135bzqncyy9dw91dcrjg67wf');
+    tier0Set.add('ban_1fundm3d7zritekc8bdt4oto5ut8begz6jnnt7n3tdxzjq3t46aiuse1h7gj');
+    
+    // zoomable sunburst: https://bl.ocks.org/mbostock/4348373
 
-        var nodeList = getNodeList(response);
+    // changes from https://github.com/d3/d3/blob/master/CHANGES.md
+    
+    d3.json('account-history.json', function(response) {
         var nodeData = {};
-        nodeData.name = "funds";
         nodeData.children = [];
-        nodeList.forEach(function(d) {
-          var child = {};
-          child.name = name(d.account);
-          child.size = d.balance;
-          child.children = [];
-          for (const [key, value] of Object.entries(d.history)) {
-            if(parseInt(value) >= limit) {
-              var grandchild = {};
-              grandchild.name = name(key);
-              grandchild.size = parseInt(value);
-              child.children.push(grandchild);
+
+        response.results.sort(function(a, b) {
+            return parseInt(b.balance) - parseInt(a.balance);
+        });
+
+        var dustChild = {};
+        dustChild.name = 'dust';
+        dustChild.size = 0;
+
+        const tier1Set = new Set();
+        response.results.forEach(function(d) {
+          if(tier0Set.has(d.account)) {
+            for (const [account, balance] of Object.entries(d.history)) {
+              tier1Set.add(account);
             }
           }
-          nodeData.children.push(child);
         });
+        
+        const tier1Map = {};
+
+        // add all the accounts over the cutoff point, list everything else as dust.
+        response.results.forEach(function(d) {
+          if(!tier0Set.has(d.account) && !(tier1Set.has(d.account))) {
+            const valueNbr = parseInt(d.balance);
+            if (valueNbr >= limit) {
+              var child = {};
+              child.name = name(d.account);
+              child.size = parseInt(d.balance);
+              child.children = [];
+              nodeData.children.push(child);
+              tier1Map[d.account] = child;
+            } else {
+              dustChild.size += valueNbr;
+            }
+          }
+        });
+        
+        // for all the accounts over the cutoff, list their history.
+        response.results.forEach(function(d) {
+          for (const [account, balance] of Object.entries(d.history)) {
+            if (tier1Map.hasOwnProperty(account)) {
+              const tier1Parent = tier1Map[account];
+              var child = {};
+              child.name = name(d.account);
+              child.size = parseInt(d.balance);
+              child.children = [];
+              tier1Parent.children.push(child);
+            }
+          }
+        });
+        
+        if (dustChild.size > 0) {
+          nodeData.children.push(dustChild);
+        }
+
+/*
+        var nodeList = getNodeList(response);
+        nodeList.forEach(function(d) {
+            var child = {};
+            child.name = name(d.account);
+            child.size = d.balance;
+            child.children = [];
+            for (const [key, value] of Object.entries(d.history)) {
+                if (parseInt(value) >= limit) {
+                    var grandchild = {};
+                    grandchild.name = name(key);
+                    grandchild.size = parseInt(value);
+                    child.children.push(grandchild);
+                }
+            }
+            nodeData.children.push(child);
+        });
+*/
         
         // Find the root node of our data, and begin sizing process.
         var root = d3.hierarchy(nodeData)
-            .sum(function (d) { return d.size});
+            .sum(function(d) {
+                return d.size
+            });
 
         // Calculate the sizes of each arc that we'll draw later.
         partition(root);
         var arc = d3.arc()
-            .startAngle(function (d) { return d.x0 })
-            .endAngle(function (d) { return d.x1 })
-            .innerRadius(function (d) { return d.y0 })
-            .outerRadius(function (d) { return d.y1 });
+            .startAngle(function(d) {
+                return d.x0
+            })
+            .endAngle(function(d) {
+                return d.x1
+            })
+            .innerRadius(function(d) {
+                return d.y0
+            })
+            .outerRadius(function(d) {
+                return d.y1
+            });
 
 
         // Add a <g> element for each node in thd data, then append <path> elements and draw lines based on the arc
         // variable calculations. Last, color the lines and the slices.
         g.selectAll('g')
             .data(root.descendants())
-            .enter().append('g').attr("class", "node").append('path')
-            .attr("display", function (d) { return d.depth ? null : "none"; })
-            .attr("d", arc)
+            .enter().append('g').attr('class', 'node').append('path')
+            .attr('display', function(d) {
+                return d.depth ? null : 'none';
+            })
+            .attr('d', arc)
             .style('stroke', '#fff')
-            .style("fill", function (d) { return color((d.children ? d : d.parent).data.name); });
+            .style('fill', function(d) {
+                var colorKey = (d.data.children ? d : d.parent).data.name;
+                //console.log(d.data.name,d.data.children,colorKey);
+                return color(colorKey);
+            });
 
 
         // Populate the <text> elements with our data-driven titles.
-        g.selectAll(".node")
-            .append("text")
-            .attr("transform", function(d) {
-                return "translate(" + arc.centroid(d) + ")rotate(" + computeTextRotation(d) + ")"; })
-            .attr("dx", "-20") // radius margin
-            .attr("dy", ".5em") // rotation align
-            .text(function(d) { return d.parent ? d.data.name : "" });
+        g.selectAll('.node')
+            .append('text')
+            .attr('class', 'titles')
+            .attr('transform', function(d) {
+                return 'translate(' + arc.centroid(d) + ')rotate(' + computeTextRotation(d) + ')';
+            })
+            .attr('dx', '-40') // radius margin
+            .attr('dy', '.5em') // rotation align
+            .text(function(d) {
+                return d.parent ? d.data.name : ''
+            });
 
     });
 
@@ -88,7 +170,7 @@ function onLoad() {
         var angle = (d.x0 + d.x1) / Math.PI * 90;
 
         // Avoid upside-down labels
-        //return (angle < 120 || angle > 270) ? angle : angle + 180;  // labels as rims
+        // return (angle < 120 || angle > 270) ? angle : angle + 180; // labels as rims
         return (angle < 180) ? angle - 90 : angle + 90; // labels as spokes
     }
 }
