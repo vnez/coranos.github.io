@@ -1,7 +1,7 @@
 function onLoad() {
     // Variables
-    var width = 800;
-    var height = 800;
+    var width = 1200;
+    var height = 1200;
     var radius = Math.min(width, height) / 2;
     var color = d3.scaleOrdinal(d3.schemeCategory20b);
 
@@ -37,6 +37,7 @@ function onLoad() {
         var dustChild = {};
         dustChild.name = 'dust';
         dustChild.size = 0;
+        dustChild.children = [];
 
         const tier1Set = new Set();
         response.results.forEach(function(d) {
@@ -53,15 +54,18 @@ function onLoad() {
         response.results.forEach(function(d) {
           if(!tier0Set.has(d.account) && !(tier1Set.has(d.account))) {
             const valueNbr = parseInt(d.balance);
-            if (valueNbr >= limit) {
-              var child = {};
-              child.name = name(d.account);
-              child.size = parseInt(d.balance);
-              child.children = [];
+            var child = {};
+            child.name = name(d.account) + ' ' + formatBytes3(d.balance);
+            child.size = parseInt(d.balance);
+            child.children = [];
+            if (valueNbr >= crabLimit) {
               nodeData.children.push(child);
               tier1Map[d.account] = child;
             } else {
               dustChild.size += valueNbr;
+              if (valueNbr >= dustlimit) {
+                dustChild.children.push(child);
+              }
             }
           }
         });
@@ -72,8 +76,8 @@ function onLoad() {
             if (tier1Map.hasOwnProperty(account)) {
               const tier1Parent = tier1Map[account];
               var child = {};
-              child.name = name(d.account);
-              child.size = parseInt(d.balance);
+              child.name = name(d.account) + ' ' + formatBytes3(balance);
+              child.size = parseInt(balance);
               child.children = [];
               tier1Parent.children.push(child);
             }
@@ -81,27 +85,9 @@ function onLoad() {
         });
         
         if (dustChild.size > 0) {
+          dustChild.name +=  ' ' + formatBytes3(dustChild.size);
           nodeData.children.push(dustChild);
         }
-
-/*
-        var nodeList = getNodeList(response);
-        nodeList.forEach(function(d) {
-            var child = {};
-            child.name = name(d.account);
-            child.size = d.balance;
-            child.children = [];
-            for (const [key, value] of Object.entries(d.history)) {
-                if (parseInt(value) >= limit) {
-                    var grandchild = {};
-                    grandchild.name = name(key);
-                    grandchild.size = parseInt(value);
-                    child.children.push(grandchild);
-                }
-            }
-            nodeData.children.push(child);
-        });
-*/
         
         // Find the root node of our data, and begin sizing process.
         var root = d3.hierarchy(nodeData)
@@ -144,20 +130,23 @@ function onLoad() {
 
 
         // Populate the <text> elements with our data-driven titles.
-        g.selectAll('.node')
+        g.selectAll('g')
             .append('text')
+            .on("click", click)
             .attr('class', 'titles')
             .attr('transform', function(d) {
                 return 'translate(' + arc.centroid(d) + ')rotate(' + computeTextRotation(d) + ')';
             })
-            .attr('dx', '-40') // radius margin
+            .attr('dx', '-80') // radius margin
             .attr('dy', '.5em') // rotation align
             .text(function(d) {
                 return d.parent ? d.data.name : ''
             });
 
+        function click(d) {
+          console.log("click",d.data.name);
+        }
     });
-
 
     /**
      * Calculate the correct distance to rotate each label based on its location in the sunburst.

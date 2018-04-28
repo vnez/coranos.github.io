@@ -19,14 +19,18 @@ function formatBytes3(a) {
 function name(account) {
     return account.substring(0, 12);
 }
-const limit = 100000;
+const whaleLimit = 1000*1000;
+
+const crabLimit = 200*1000;
+
+const dustlimit = 50*1000;
 
 function getNodeList(response) {
 
     response.results.forEach(function(d) {
         for (const [key, value] of Object.entries(d.history)) {
             const valueNbr = parseInt(value);
-            if (valueNbr < limit) {
+            if (valueNbr < whaleLimit) {
                 delete d.history[key];
             }
         }
@@ -34,7 +38,7 @@ function getNodeList(response) {
     var nodeList = [];
     response.results.forEach(function(d) {
         const valueNbr = parseInt(d.balance);
-        if (valueNbr >= limit) {
+        if (valueNbr >= whaleLimit) {
             nodeList.push(d);
         }
     });
@@ -60,7 +64,7 @@ function getNodeList(response) {
     nodeList.forEach(function(d) {
         for (const [key, value] of Object.entries(d.history)) {
             if (!(key in historyNodes)) {
-                if (parseInt(value) >= limit) {
+                if (parseInt(value) >= whaleLimit) {
                     const elt = {};
                     elt.balance = value;
                     elt.account = key;
