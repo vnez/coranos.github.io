@@ -42,7 +42,7 @@ function onLoad() {
         const tier1Set = new Set();
         response.results.forEach(function(d) {
           if(tier0Set.has(d.account)) {
-            for (const [account, balance] of Object.entries(d.history)) {
+            for (const [account, balance] of Object.entries(d.send_history)) {
               tier1Set.add(account);
             }
           }
@@ -70,9 +70,9 @@ function onLoad() {
           }
         });
         
-        // for all the accounts over the cutoff, list their history.
+        // for all the accounts over the cutoff, list their history. receive_history
         response.results.forEach(function(d) {
-          for (const [account, balance] of Object.entries(d.history)) {
+          for (const [account, balance] of Object.entries(d.send_history)) {
             if (tier1Map.hasOwnProperty(account)) {
               const tier1Parent = tier1Map[account];
               var child = {};
