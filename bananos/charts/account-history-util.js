@@ -19,11 +19,6 @@ function formatBytes3(a) {
 function name(account) {
     return account.substring(0, 12);
 }
-const whaleLimit = 1000*1000;
-
-const crabLimit = 200*1000;
-
-const dustLimit = 50*1000;
 
 function getNodeList(response) {
 
