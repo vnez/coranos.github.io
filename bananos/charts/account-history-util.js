@@ -6,7 +6,7 @@ function formatBytes(a, b) {
     if (0 == a) return '0 Bytes';
     var c = 1024,
         d = b || 2,
-        e = ['Bytes', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'],
+        e = ['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'],
         f = Math.floor(Math.log(a) / Math.log(c));
     return parseFloat((a / Math.pow(c, f)).toFixed(d)) + ' ' + e[f]
 }
@@ -23,7 +23,7 @@ const whaleLimit = 1000*1000;
 
 const crabLimit = 200*1000;
 
-const dustlimit = 50*1000;
+const dustLimit = 50*1000;
 
 function getNodeList(response) {
 
