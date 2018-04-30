@@ -3,7 +3,7 @@ function numberWithCommas(x) {
 }
 
 function formatBytes(a, b) {
-    if (0 == a) return '0 Bytes';
+    if (0 == a) return '0';
     var c = 1024,
         d = b || 2,
         e = ['', 'K', 'M', 'G', 'T', 'P', 'E', 'Z', 'Y'],
