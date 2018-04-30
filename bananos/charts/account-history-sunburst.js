@@ -15,29 +15,28 @@ const nodeDataMap = {};
 
 // changes from https://github.com/d3/d3/blob/master/CHANGES.md
 
-function setNodeNameAndSize(node) {
-  if(node.children.length > 0) {
-    node.size = 0;
-    node.children.forEach(function(child) {
-      node.size += child.size;
-    });
-  }
-  node.name = name(node.account) + ' ' + formatBytes3(node.size);
-}
-
 function getNodeDataMap(jsonData) {
   if(Object.keys(nodeDataMap).length > 0) {
     return nodeDataMap;
   }
   
   jsonData.forEach(function(d) {
-    const valueNbr = parseInt(d.balance);
     var child = {};
     child.account = d.account;
-    child.name = name(d.account) + ' ' + formatBytes3(d.balance);
-    child.size = parseInt(d.balance);
+    child.balance = parseInt(d.balance);
     child.send_history = d.send_history;
     child.children = [];
+    child.size = child.balance;
+    child.balance_sent = 0;
+    for (const [account, balance] of Object.entries(child.send_history)) {
+      if(account != child.account) {
+        child.balance_sent += parseInt(balance);
+      }
+    }
+    child.name = [];
+    child.name.push(name(child.account) + '=' + formatBytes3(child.balance));
+    child.name.push('sent ' + formatBytes3(child.balance_sent));
+    // console.log(name(child.account) , formatBytes3(child.size));
     nodeDataMap[d.account] = child;
   });
   return nodeDataMap;
@@ -45,10 +44,6 @@ function getNodeDataMap(jsonData) {
 
 function addChildren(nodeDataMap,parentSet,parent,depth) {
   // console.log("addChildren",name(parent.account),depth);
-  
-  if(depth > 2) {
-    return;
-  };
   
   for (const [account, balance] of Object.entries(parent.send_history)) {
     if(!parentSet.has(account)) {
@@ -62,17 +57,11 @@ function addChildren(nodeDataMap,parentSet,parent,depth) {
   
   const childDepth = depth + 1;
   parent.children.forEach(function(child) {
-      // console.log("addChildren",childDepth,name(parent.account),name(child.account));
       addChildren(nodeDataMap,parentSet,child,childDepth);
   });
-  setNodeNameAndSize(parent);
-  if(depth == 0) {
-    parent.size = 0;
-  }
 }
     
 function onLoad() {
-  
     d3.json('account-history.json', function(response) {
       const nodeDataMap = getNodeDataMap(response.results);
       const rootData = nodeDataMap[rootAccount];
@@ -84,11 +73,43 @@ function onLoad() {
     });
 }
 
-function showChart() {
-  const rootData = nodeDataMap[rootAccount];
- // Size our <svg> element, add a <g> element, and move translate 0,0 to the center of the element.
-  d3.select('#chart').selectAll("*").remove();
+function copyNode(node,depth) {
+  const copy = {};
+  copy.name = node.name;
+  copy.account = node.account;
+  copy.balance = node.balance;
+  copy.balance_sent = node.balance_sent;
+  copy.size = node.size;
+  copy.children = [];
+  if(depth == 0) {
+    return copy;
+  }
+  node.children.forEach(function(child) {
+    const childCopy = copyNode(child,depth-1);
+    childCopy.parent = node;
+    copy.children.push(childCopy);
+  });
+  copy.size = getSize(copy);
+  // copy.name = name(copy.account) + ' ' + formatBytes3(copy.size);
+  return copy;
+}
 
+function getSize(node) {
+  if(node.children.length == 0) {
+    return node.balance + node.balance_sent;
+  } else {
+    return undefined;
+  }
+}
+
+function showChart() {
+  //console.log('rootAccount',rootAccount);
+  const rootData = nodeDataMap[rootAccount];
+  //console.log(rootData);
+  d3.select('#chart').selectAll("*").remove();
+  d3.select('#rootName').html(rootAccount + " " + rootData.name);
+
+  // Size our <svg> element, add a <g> element, and move translate 0,0 to the center of the element.
   var g = d3.select('#chart').append('svg')
       .attr('width', width)
       .attr('height', height)
@@ -99,30 +120,33 @@ function showChart() {
   var partition = d3.partition()
       .size([2 * Math.PI, radius]);
   
-  const nodeData = {};
-  nodeData.children = [];
-  nodeData.children.push(rootData);
+  const nodeData = copyNode(rootData,3);
+  
+  //console.log(nodeData); 
   
   // Find the root node of our data, and begin sizing process.
   var root = d3.hierarchy(nodeData)
       .sum(function(d) {
-          return d.size
-      });
+          return d.size;
+      })
+      .sort(function(a, b) { return b.size - a.size; });
 
   // Calculate the sizes of each arc that we'll draw later.
   partition(root);
   var arc = d3.arc()
       .startAngle(function(d) {
-          return d.x0
+          return d.x0;
       })
       .endAngle(function(d) {
-          return d.x1
+          return d.x1;
       })
       .innerRadius(function(d) {
-          return d.y0 - (d.y1 - d.y0);
+          return d.y0;
+          //return d.y0 - (d.y1 - d.y0);
       })
       .outerRadius(function(d) {
-          return d.y1 - (d.y1 - d.y0);
+          return d.y1;
+          //return d.y1 - (d.y1 - d.y0);
       });
 
   // console.log(root);
@@ -132,9 +156,6 @@ function showChart() {
   g.selectAll('g')
       .data(root.descendants())
       .enter().append('g').attr('class', 'node').append('path')
-      .attr('display', function(d) {
-          return d.depth ? null : 'none';
-      })
       .attr('d', arc)
       .on("click", click)
       .style('stroke', '#fff')
@@ -154,11 +175,23 @@ function showChart() {
           return 'translate(' + arc.centroid(d) + ')rotate(' + computeTextRotation(d) + ')';
       })
       .attr('dx', '-80') // radius margin
-      .attr('dy', '.5em') // rotation align
-      .text(function(d) {
-          return d.parent ? d.data.name : ''
+      .attr('dy', '-.5em') // rotation align
+      .html(function(d) {
+          return d.data.name[0];
       });
 
+  g.selectAll('g')
+      .append('text')
+      .on("click", click)
+      .attr('class', 'titles')
+      .attr('transform', function(d) {
+          return 'translate(' + arc.centroid(d) + ')rotate(' + computeTextRotation(d) + ')';
+      })
+      .attr('dx', '-80') // radius margin
+      .attr('dy', '+.5em') // rotation align
+      .html(function(d) {
+          return d.data.name[1];
+      });
   function click(d) {
     // console.log("click",d.data.account);
     if(rootAccount == d.data.account) {
@@ -178,9 +211,11 @@ function showChart() {
  * @return {Number}
  */
 function computeTextRotation(d) {
-    var angle = (d.x0 + d.x1) / Math.PI * 90;
+    var angle = ((d.x0 + d.x1) / Math.PI * 90) % 360;
 
-    if(rootAccount == d.data.account) {
+    //console.log(d.data.name,angle)
+    
+    if(d.parent == undefined) {
       return 0;
     }
     
