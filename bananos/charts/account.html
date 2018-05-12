@@ -33,14 +33,14 @@ form {
       }
       function onLoad () {
         jsonTable('#dataTable', {
-          head : [ 'Banano Rank', 'Account', 'Banano','Balance In','Banano Out','Reddit','Discord' ],
+          head : [ 'Banano Rank', 'Account', 'Banano','Banano Out','Reddit','Discord' ],
           thClass : 'solid',
           trClass : 'solid',
           sortTable : false
         });
 
         let options = {};
-        options.json = [ 'rank', 'account', 'balance','balanceIn','balanceOut','reddit','discord' ];
+        options.json = [ 'rank', 'account', 'balance','balanceOut','reddit','discord' ];
 
         $.ajaxSetup({
           beforeSend : function (xhr) {
@@ -59,14 +59,20 @@ form {
           
           const redditAccount = 'ban_3redditpxsum1uizb8o8is9kau7uckzpts7oddoz6j4gzorxc8eaodkjzxqb';
           const discordAccount = 'ban_3disc5557sb9ri99h7czmn6ms5kcfsafnsxekarg1pp9f3a1ik4ndjcb9cod';
-          let redditHistory;
-          let discordHistory;
+          let redditHistory = {};
+          let discordHistory = {};
           for (let dataIx = 0; dataIx < response.results.length; dataIx++) {
             if(response.results[dataIx].account == redditAccount) {
-              redditHistory = response.results[dataIx].send_history;
+              let history = response.results[dataIx].history;
+              if(history != null) {
+              	redditHistory = history;
+              }
             }
             if(response.results[dataIx].account == discordAccount) {
-              discordHistory = response.results[dataIx].send_history;
+              let history = response.results[dataIx].history;
+              if(history != null) {
+                discordHistory = history;
+              }
             }
           }
           
@@ -76,15 +82,10 @@ form {
             response.results[dataIx].reddit = redditHistory.hasOwnProperty(response.results[dataIx].account);
             response.results[dataIx].discord = discordHistory.hasOwnProperty(response.results[dataIx].account);
             var balanceOut = 0;
-            for (const [key, value] of Object.entries(response.results[dataIx].send_history)) {
+            for (const [key, value] of Object.entries(response.results[dataIx].history)) {
                 balanceOut += parseInt(value);
             }
-            var balanceIn = 0;
-            for (const [key, value] of Object.entries(response.results[dataIx].receive_history)) {
-              balanceIn += parseInt(value);
-            }
             response.results[dataIx].balanceOut = numberWithCommas(balanceOut);
-            response.results[dataIx].balanceIn = numberWithCommas(balanceIn);
           }
 
           let row = makeRow(response, options, 'solid', 'solid');
