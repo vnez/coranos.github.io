@@ -24,11 +24,11 @@ function getNodeDataMap(jsonData) {
     var child = {};
     child.account = d.account;
     child.balance = parseInt(d.balance);
-    child.send_history = d.send_history;
+    child.history = d.history;
     child.children = [];
     child.size = child.balance;
     child.balance_sent = 0;
-    for (const [account, balance] of Object.entries(child.send_history)) {
+    for (const [account, balance] of Object.entries(child.history)) {
       if(account != child.account) {
         child.balance_sent += parseInt(balance);
       }
@@ -45,7 +45,7 @@ function getNodeDataMap(jsonData) {
 function addChildren(nodeDataMap,parentSet,parent,depth) {
   // console.log("addChildren",name(parent.account),depth);
   
-  for (const [account, balance] of Object.entries(parent.send_history)) {
+  for (const [account, balance] of Object.entries(parent.history)) {
     if(!parentSet.has(account)) {
       parentSet.add(account);
       if(nodeDataMap.hasOwnProperty(account)) {
