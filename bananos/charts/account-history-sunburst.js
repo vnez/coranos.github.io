@@ -9,6 +9,13 @@ const genesisAccount = 'ban_1bananobh5rat99qfgt1ptpieie5swmoth87thi74qgbfrij7dcg
 
 var rootAccount = genesisAccount;
 
+var url = new URL(window.location);
+var accountUrlParam = url.searchParams.get("account");
+if (accountUrlParam != undefined) {
+  rootAccount = accountUrlParam;
+}
+
+
 const nodeDataMap = {};
 
 // zoomable sunburst: https://bl.ocks.org/mbostock/4348373
@@ -120,7 +127,7 @@ function showChart() {
   var partition = d3.partition()
       .size([2 * Math.PI, radius]);
   
-  const nodeData = copyNode(rootData,3);
+  const nodeData = copyNode(rootData,5);
   
   //console.log(nodeData); 
   
