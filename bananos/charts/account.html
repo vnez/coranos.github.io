@@ -25,6 +25,10 @@
   background-color: #FFAAFF;
 }
 
+.burned {
+  background-color: #FF0000;
+}
+
 form {
   display: inline;
 }
@@ -38,6 +42,7 @@ form {
     </tbody>
   </table>
   <hr>
+  <script src="../../js-lib/google-tracking.js"></script>
   <script src='../../js-lib/jquery-3.2.1.js'></script>
   <script src='../../js-lib/load-json.js'></script>
   <script src='../../js-lib/json-table.js'></script>
@@ -47,14 +52,14 @@ form {
       }
       function onLoad () {
         jsonTable('#dataTable', {
-          head : [ 'Banano Rank', 'Account', 'Banano','Tx','Reddit','Discord' ],
+          head : [ 'Banano Rank', 'Account', 'Banano','Tx','Reddit','Discord','Burned' ],
           thClass : 'solid',
           trClass : 'solid',
           sortTable : false
         });
 
         let options = {};
-        options.json = [ 'rank', 'account', 'balance','tx','reddit','discord' ];
+        options.json = [ 'rank', 'account', 'balance','tx','reddit','discord','burned' ];
 
         $.ajaxSetup({
           beforeSend : function (xhr) {
@@ -63,59 +68,72 @@ form {
             }
           }
         });
-        $.getJSON('account-history.json', function (response) {
-          let table = $('#dataTable').find('tbody');
-          table.empty();
-
-          response.results.sort(function (a, b) {
-            return b.balance - a.balance;
+        $.getJSON('burn-accounts.json', function (response) {
+//          console.log(response);
+          
+          const burnAccountSet = new Set();
+          response.forEach(function (elt) {
+            burnAccountSet.add(elt);
           });
           
-          const redditAccount = 'ban_3redditpxsum1uizb8o8is9kau7uckzpts7oddoz6j4gzorxc8eaodkjzxqb';
-          const discordAccount = 'ban_3disc5557sb9ri99h7czmn6ms5kcfsafnsxekarg1pp9f3a1ik4ndjcb9cod';
-          const coranosAccount = 'ban_1coranoshiqdentfbwkfo7fxzgg1jhz6m33pt9aa8497xxfageuskroocdxa';
-          let redditHistory = {};
-          let discordHistory = {};
-          for (let dataIx = 0; dataIx < response.results.length; dataIx++) {
-            if(response.results[dataIx].account == redditAccount) {
-              let history = response.results[dataIx].history;
-              if(history != null) {
-              	redditHistory = history;
+          $.getJSON('account-history.json', function (response) {
+            let table = $('#dataTable').find('tbody');
+            table.empty();
+  
+            response.results.sort(function (a, b) {
+              return b.balance - a.balance;
+            });
+            
+            const redditAccount = 'ban_3redditpxsum1uizb8o8is9kau7uckzpts7oddoz6j4gzorxc8eaodkjzxqb';
+            const discordAccount = 'ban_3disc5557sb9ri99h7czmn6ms5kcfsafnsxekarg1pp9f3a1ik4ndjcb9cod';
+            const coranosAccount = 'ban_1coranoshiqdentfbwkfo7fxzgg1jhz6m33pt9aa8497xxfageuskroocdxa';
+            let redditHistory = {};
+            let discordHistory = {};
+            for (let dataIx = 0; dataIx < response.results.length; dataIx++) {
+              if(response.results[dataIx].account == redditAccount) {
+                let history = response.results[dataIx].history;
+                if(history != null) {
+                	redditHistory = history;
+                }
+              }
+              if(response.results[dataIx].account == discordAccount) {
+                let history = response.results[dataIx].history;
+                if(history != null) {
+                  discordHistory = history;
+                }
               }
             }
-            if(response.results[dataIx].account == discordAccount) {
-              let history = response.results[dataIx].history;
-              if(history != null) {
-                discordHistory = history;
+            
+            for (let dataIx = 0; dataIx < response.results.length; dataIx++) {
+              response.results[dataIx].rank = dataIx + 1;
+              response.results[dataIx].balance = numberWithCommas(response.results[dataIx].balance);
+              response.results[dataIx].reddit = redditHistory.hasOwnProperty(response.results[dataIx].account);
+              response.results[dataIx].discord = discordHistory.hasOwnProperty(response.results[dataIx].account);
+              response.results[dataIx].coranos = response.results[dataIx].history.hasOwnProperty(coranosAccount);
+              var tx = 0;
+              for (const [key, value] of Object.entries(response.results[dataIx].history)) {
+                  tx++;
+              }
+              response.results[dataIx].tx = numberWithCommas(tx);
+              let tdClass;
+              if(response.results[dataIx].coranos) {
+                response.results[dataIx].tdclass = 'solid coranos';
+              }
+              if(response.results[dataIx].reddit) {
+                response.results[dataIx].tdclass = 'solid reddit';
+              }
+              if(response.results[dataIx].discord) {
+                response.results[dataIx].tdclass = 'solid discord';
+              }
+              response.results[dataIx].burned = burnAccountSet.has(response.results[dataIx].account);
+              if(response.results[dataIx].burned) {
+                response.results[dataIx].tdclass = 'solid burned';
               }
             }
-          }
-          
-          for (let dataIx = 0; dataIx < response.results.length; dataIx++) {
-            response.results[dataIx].rank = dataIx + 1;
-            response.results[dataIx].balance = numberWithCommas(response.results[dataIx].balance);
-            response.results[dataIx].reddit = redditHistory.hasOwnProperty(response.results[dataIx].account);
-            response.results[dataIx].discord = discordHistory.hasOwnProperty(response.results[dataIx].account);
-            response.results[dataIx].coranos = response.results[dataIx].history.hasOwnProperty(coranosAccount);
-            var tx = 0;
-            for (const [key, value] of Object.entries(response.results[dataIx].history)) {
-                tx++;
-            }
-            response.results[dataIx].tx = numberWithCommas(tx);
-            let tdClass;
-            if(response.results[dataIx].coranos) {
-              response.results[dataIx].tdclass = 'solid coranos';
-            }
-            if(response.results[dataIx].reddit) {
-              response.results[dataIx].tdclass = 'solid reddit';
-            }
-            if(response.results[dataIx].discord) {
-              response.results[dataIx].tdclass = 'solid discord';
-            }
-          }
-          
-          const row = makeRow(response, options, 'solid', 'solid');
-          table.append(row);
+            
+            const row = makeRow(response, options, 'solid', 'solid');
+            table.append(row);
+          });
         });
       }
     </script>

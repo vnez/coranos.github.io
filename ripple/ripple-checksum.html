@@ -5,31 +5,31 @@
 <title>Checksum Test</title>
 </head>
 <body>
-	If you find this form useful, feel free to donate. My ripple wallet address is: r92a6kZ5WiZZm2pTjb1yQ45a9aYMGNaK2d
-	<p>
-		<a href="safety.html" target="blank">How to use this tool safely</a>
-	<p>
-		<!--  -->
-	<form onsubmit="return checkRipple();">
-		Ripple Secret (starts with the lower case letter s) <br> <input type="text" size="60" id="secret">
-		<p>
-			Max Number Of Positive Matches <br> <input type="number" size="10" id="maxPositive" value="10">
-		<p>
-			Max Number Of Characters To Alter (3 matches takes 3gb of ram and 8 hrs, 4 matches takes 3tb ram and 41 days) <br> <input type="number" size="10"
-				id="maxAlteredCharacters" value="2" min="1" max="3">
-		<p>
-			<input type="submit" value="submit">
-	</form>
-	<p>
-	<div id="result"></div>
-	<p>
-	<div id="debug"></div>
-	<script src="js/google-tracking.js"></script>
-	<script src="js/2.5.3-crypto-sha256.js"></script>
-	<script src="js/jsbn.js"></script>
-	<script src="js/jsbn2.js"></script>
-	<script src="js/ripple-checksum.js"></script>
-	<script>
+  If you find this form useful, feel free to donate. My ripple wallet address is: r92a6kZ5WiZZm2pTjb1yQ45a9aYMGNaK2d
+  <p>
+    <a href="safety.html" target="blank">How to use this tool safely</a>
+  <p>
+    <!--  -->
+  <form onsubmit="return checkRipple();">
+    Ripple Secret (starts with the lower case letter s) <br> <input type="text" size="60" id="secret">
+    <p>
+      Max Number Of Positive Matches <br> <input type="number" size="10" id="maxPositive" value="10">
+    <p>
+      Max Number Of Characters To Alter (3 matches takes 3gb of ram and 8 hrs, 4 matches takes 3tb ram and 41 days) <br> <input type="number" size="10"
+        id="maxAlteredCharacters" value="2" min="1" max="3">
+    <p>
+      <input type="submit" value="submit">
+  </form>
+  <p>
+  <div id="result"></div>
+  <p>
+  <div id="debug"></div>
+  <script src="js/google-tracking.js"></script>
+  <script src="js/2.5.3-crypto-sha256.js"></script>
+  <script src="js/jsbn.js"></script>
+  <script src="js/jsbn2.js"></script>
+  <script src="js/ripple-checksum.js"></script>
+  <script>
 		var w;
 
 		function checkRipple() {
