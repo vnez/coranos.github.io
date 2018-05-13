@@ -4,109 +4,15 @@ var height = 1800;
 var radius = Math.min(width, height) / 2;
 var color = d3.scaleOrdinal(d3.schemeCategory20b);
 
-// Get the data from our JSON file
-const genesisAccount = 'ban_1bananobh5rat99qfgt1ptpieie5swmoth87thi74qgbfrij7dcgjiij94xr';
-
-var rootAccount = genesisAccount;
-
-var url = new URL(window.location);
-var accountUrlParam = url.searchParams.get("account");
-if (accountUrlParam != undefined) {
-  rootAccount = accountUrlParam;
-}
-
-
-const nodeDataMap = {};
-
 // zoomable sunburst: https://bl.ocks.org/mbostock/4348373
 
 // changes from https://github.com/d3/d3/blob/master/CHANGES.md
 
-function getNodeDataMap(jsonData) {
-  if(Object.keys(nodeDataMap).length > 0) {
-    return nodeDataMap;
-  }
-  
-  jsonData.forEach(function(d) {
-    var child = {};
-    child.account = d.account;
-    child.balance = parseInt(d.balance);
-    child.history = d.history;
-    child.children = [];
-    child.size = child.balance;
-    child.balance_sent = 0;
-    for (const [account, balance] of Object.entries(child.history)) {
-      if(account != child.account) {
-        child.balance_sent += parseInt(balance);
-      }
-    }
-    child.name = [];
-    child.name.push(name(child.account) + '=' + formatBytes3(child.balance));
-    child.name.push('sent ' + formatBytes3(child.balance_sent));
-    // console.log(name(child.account) , formatBytes3(child.size));
-    nodeDataMap[d.account] = child;
-  });
-  return nodeDataMap;
-}
-
-function addChildren(nodeDataMap,parentSet,parent,depth) {
-  // console.log("addChildren",name(parent.account),depth);
-  
-  for (const [account, balance] of Object.entries(parent.history)) {
-    if(!parentSet.has(account)) {
-      parentSet.add(account);
-      if(nodeDataMap.hasOwnProperty(account)) {
-        const child = nodeDataMap[account];
-        parent.children.push(child);
-      }
-    }
-  }
-  
-  const childDepth = depth + 1;
-  parent.children.forEach(function(child) {
-      addChildren(nodeDataMap,parentSet,child,childDepth);
-  });
-}
-    
 function onLoad() {
     d3.json('account-history.json', function(response) {
-      const nodeDataMap = getNodeDataMap(response.results);
-      const rootData = nodeDataMap[rootAccount];
-      const parentSet = new Set();
-      parentSet.add(rootAccount);
-      addChildren(nodeDataMap,parentSet,rootData,0);
-      
+      loadDataMap(response);      
       showChart();
     });
-}
-
-function copyNode(node,depth) {
-  const copy = {};
-  copy.name = node.name;
-  copy.account = node.account;
-  copy.balance = node.balance;
-  copy.balance_sent = node.balance_sent;
-  copy.size = node.size;
-  copy.children = [];
-  if(depth == 0) {
-    return copy;
-  }
-  node.children.forEach(function(child) {
-    const childCopy = copyNode(child,depth-1);
-    childCopy.parent = node;
-    copy.children.push(childCopy);
-  });
-  copy.size = getSize(copy);
-  // copy.name = name(copy.account) + ' ' + formatBytes3(copy.size);
-  return copy;
-}
-
-function getSize(node) {
-  if(node.children.length == 0) {
-    return node.balance + node.balance_sent;
-  } else {
-    return undefined;
-  }
 }
 
 function showChart() {
