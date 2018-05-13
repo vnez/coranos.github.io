@@ -47,14 +47,14 @@ form {
       }
       function onLoad () {
         jsonTable('#dataTable', {
-          head : [ 'Banano Rank', 'Account', 'Banano','Tx','Reddit','Discord','Coranos' ],
+          head : [ 'Banano Rank', 'Account', 'Banano','Tx','Reddit','Discord' ],
           thClass : 'solid',
           trClass : 'solid',
           sortTable : false
         });
 
         let options = {};
-        options.json = [ 'rank', 'account', 'balance','tx','reddit','discord','coranos' ];
+        options.json = [ 'rank', 'account', 'balance','tx','reddit','discord' ];
 
         $.ajaxSetup({
           beforeSend : function (xhr) {
