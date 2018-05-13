@@ -11,6 +11,18 @@
   font-family: monospace;
 }
 
+.coranos {
+  background-color: #FFFFAA;
+}
+
+.reddit {
+  background-color: #FFAAAA;
+}
+
+.discord {
+  background-color: #FFAAFF;
+}
+
 form {
   display: inline;
 }
@@ -33,14 +45,14 @@ form {
       }
       function onLoad () {
         jsonTable('#dataTable', {
-          head : [ 'Banano Rank', 'Account', 'Banano','Banano Out','Tx','Reddit','Discord' ],
+          head : [ 'Banano Rank', 'Account', 'Banano','Tx','Reddit','Discord','Coranos' ],
           thClass : 'solid',
           trClass : 'solid',
           sortTable : false
         });
 
         let options = {};
-        options.json = [ 'rank', 'account', 'balance','balanceOut','tx','reddit','discord' ];
+        options.json = [ 'rank', 'account', 'balance','tx','reddit','discord','coranos' ];
 
         $.ajaxSetup({
           beforeSend : function (xhr) {
@@ -59,6 +71,7 @@ form {
           
           const redditAccount = 'ban_3redditpxsum1uizb8o8is9kau7uckzpts7oddoz6j4gzorxc8eaodkjzxqb';
           const discordAccount = 'ban_3disc5557sb9ri99h7czmn6ms5kcfsafnsxekarg1pp9f3a1ik4ndjcb9cod';
+          const coranosAccount = 'ban_1coranoshiqdentfbwkfo7fxzgg1jhz6m33pt9aa8497xxfageuskroocdxa';
           let redditHistory = {};
           let discordHistory = {};
           for (let dataIx = 0; dataIx < response.results.length; dataIx++) {
@@ -81,18 +94,25 @@ form {
             response.results[dataIx].balance = numberWithCommas(response.results[dataIx].balance);
             response.results[dataIx].reddit = redditHistory.hasOwnProperty(response.results[dataIx].account);
             response.results[dataIx].discord = discordHistory.hasOwnProperty(response.results[dataIx].account);
-            var balanceOut = 0;
+            response.results[dataIx].coranos = response.results[dataIx].history.hasOwnProperty(coranosAccount);
             var tx = 0;
             for (const [key, value] of Object.entries(response.results[dataIx].history)) {
-              	var valueInt = parseInt(value);
-                balanceOut += valueInt;
                 tx++;
             }
-            response.results[dataIx].balanceOut = numberWithCommas(balanceOut);
             response.results[dataIx].tx = numberWithCommas(tx);
+            let tdClass;
+            if(response.results[dataIx].coranos) {
+              response.results[dataIx].tdclass = 'solid coranos';
+            }
+            if(response.results[dataIx].reddit) {
+              response.results[dataIx].tdclass = 'solid reddit';
+            }
+            if(response.results[dataIx].discord) {
+              response.results[dataIx].tdclass = 'solid discord';
+            }
           }
-
-          let row = makeRow(response, options, 'solid', 'solid');
+          
+          const row = makeRow(response, options, 'solid', 'solid');
           table.append(row);
         });
       }
