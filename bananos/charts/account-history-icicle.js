@@ -87,7 +87,7 @@ function showIcicles() {
       .attr("height", function(d) { return d.x1 - d.x0; })
       .attr("width", function(d) { return d.y1 - d.y0; })
       .attr('transform', function(d) {
-        return 'translate(0,10)';
+        return 'translate(0,' + ((d.x1 - d.x0)/2) + ')';
     })
      .style("cursor", "pointer")
      .text(function(d) { return d.data.name})
