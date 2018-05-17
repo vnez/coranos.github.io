@@ -10,6 +10,13 @@
   font-size: 10px;
 }
 
+.centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
 .solid_border {
   border: solid;
   border-width: 0.5px;
@@ -71,56 +78,80 @@ img {
   -webkit-transform: rotate(-180deg);
   -ms-transform: rotate(-180deg);
 }
+
+.wrapper {
+  display: flex;
+}
+
+#L {
+  flex: 0 0 50%;
+}
+
+#R {
+  flex: 1;
+}
 </style>
 </head>
 
 <body onload="onLoad();">
-  <table style="width: 100%;">
-    <tr>
-      <td style="width: 40%;">Enter =>=&darr;
-        <table id="L">
-          <tr>
-            <td class="11"></td>
-            <td class="12"></td>
-          </tr>
-          <tr>
-            <td class="21"></td>
-            <td class="22"></td>
-          </tr>
-          <tr>
-            <td class="31"></td>
-            <td class="32"></td>
-          </tr>
-          <tr>
-            <td class="41"></td>
-            <td class="42"></td>
-          </tr>
-        </table>
-        <p>Leave =&darr;
-      </td>
-      <td style="width: 20%;"></td>
-      <td style="width: 40%;">Enter =>=&darr;
-        <table id="R">
-          <tr>
-            <td class="11"></td>
-            <td class="12"></td>
-          </tr>
-          <tr>
-            <td class="21"></td>
-            <td class="22"></td>
-          </tr>
-          <tr>
-            <td class="31"></td>
-            <td class="32"></td>
-          </tr>
-          <tr>
-            <td class="41"></td>
-            <td class="42"></td>
-          </tr>
-        </table> Leave =&darr;
-      </td>
-    </tr>
-  </table>
+  <div class="wrapper">
+    <div class="solid_border centered">
+      <table style="width: 50%;" class="centered solid_border" id="L">
+        <tr>
+          <td>Enter =>=&darr;</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="11"></td>
+          <td class="12"></td>
+        </tr>
+        <tr>
+          <td class="21"></td>
+          <td class="22"></td>
+        </tr>
+        <tr>
+          <td class="31"></td>
+          <td class="32"></td>
+        </tr>
+        <tr>
+          <td class="41"></td>
+          <td class="42"></td>
+        </tr>
+        <tr>
+          <td>Leave =&darr;</td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+    <div class="solid_border centered">
+      <table style="width: 50%;" class="centered solid_border" id="R">
+        <tr>
+          <td>Enter =>=&darr;</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td class="11"></td>
+          <td class="12"></td>
+        </tr>
+        <tr>
+          <td class="21"></td>
+          <td class="22"></td>
+        </tr>
+        <tr>
+          <td class="31"></td>
+          <td class="32"></td>
+        </tr>
+        <tr>
+          <td class="41"></td>
+          <td class="42"></td>
+        </tr>
+        <tr>
+          <td>Leave =&darr;</td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </div>
   <script src='../../js-lib/jquery-3.2.1.js'></script>
   <script>
       function randomInt (range) {
