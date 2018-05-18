@@ -55,13 +55,13 @@
   <h2>Judges</h2>
   <ul>
     <li>@Coranos#4281</li>
-    <li>@Super Betta Fish 🐡 (RAINMASTER)#3900</li>
+    <li>Super Betta Fish 🐡 (JungleFish)#3900</li>
     <li>@ChocolateFudCake#1337</li>
     <li>@Bbedward#9246</li>
     <li>@Seeker214#3392</li>
-    <li>@Nano26#1771</li>
+    <li>👑King Kong👑#1771</li>
     <li>@Flightless_Pig#3603</li>
-    <li>@Team.junglo.Andreiniana:alien:.#3438</li>
+    <li>Team.Junglo.Andreiniana.👽#3438</li>
   </ul>
   <H3></H3>
   <h2>Submission Timeframe - Deadline</h2>
@@ -300,10 +300,19 @@
   <script>
       callGoogleTracker();
       
+      function processVideoArray(videos) {
+        let result = ''
+        for (let videoIx = 0; videoIx < videos.length; videoIx++) {
+          result += '<a target="_blank" href="' + videos[videoIx].video + '"><img width=100 height=100 src="' + videos[videoIx].thumbnail + '" />';
+          // result += '<iframe width="100" height="100" src="' + videos[videoIx] + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+        }
+        return result;
+      }
+      
       function processImageArray(images) {
         let result = ''
         for (let imageIx = 0; imageIx < images.length; imageIx++) {
-          result += '<a target="_blank" href="' + images[imageIx] + '"><img width=100 height=100 src="' + images[imageIx] + '" />'
+          result += '<a target="_blank" href="' + images[imageIx] + '"><img width=100 height=100 src="' + images[imageIx] + '" />';
         }
         return result;
       }
@@ -337,7 +346,7 @@
           for (let dataIx = 0; dataIx < results.length; dataIx++) {
             results[dataIx].verification = processImageArray(results[dataIx].verification);
             results[dataIx].banano = processImageArray(results[dataIx].banano);
-            results[dataIx].video = processImageArray(results[dataIx].video);
+            results[dataIx].video = processVideoArray(results[dataIx].video);
           }
 
           const row = makeRow(response, options, 'solid_border centered_text', 'solid_border centered_text');
