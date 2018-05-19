@@ -308,7 +308,11 @@
       function processVideoArray (videos) {
         let result = ''
         for (let videoIx = 0; videoIx < videos.length; videoIx++) {
-          result += '<a target="_blank" href="' + videos[videoIx].video + '"><img class="thumbnail" src="' + videos[videoIx].thumbnail + '" />';
+          if(videos[videoIx].message !== undefined) {
+            result += videos[videoIx].message;
+          } else {
+          	result += '<a target="_blank" href="' + videos[videoIx].video + '"><img class="thumbnail" src="' + videos[videoIx].thumbnail + '" />';
+          }
           // result += '<iframe width="100" height="100" src="' + videos[videoIx] + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
         }
         return result;

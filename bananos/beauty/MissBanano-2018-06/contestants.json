@@ -162,5 +162,149 @@
 				"video": "https://youtu.be/9hKicNDXZqo"
 			}
 		]
+	},
+	{
+		"contestant": "12",
+		"discord": "@bbedward#9246",
+		"verification": [
+			"https://i.imgur.com/meW8uui.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/t97Xamk.jpg"
+		],
+		"video": [
+			{
+				"thumbnail": "https://img.youtube.com/vi/rFgJSMN7APE/default.jpg",
+				"video": "https://youtu.be/rFgJSMN7APE"
+			}
+		]
+	},
+	{
+		"contestant": "13",
+		"discord": "@Lunanueva-Team Los Sopla Nucas#4044",
+		"verification": [
+			"https://i.imgur.com/vOyra0l.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/aI0ztb1.jpg"
+		],
+		"video": [
+			{
+				"message": "contestant sent video to the judges individually."
+			}
+		]
+	},
+	{
+		"contestant": "14",
+		"discord": "@stephrnm#1455",
+		"verification": [
+			"https://i.imgur.com/Ygohbpd.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/SLxyUbJ.png",
+			"https://i.imgur.com/kaaroEN.png",
+			"https://i.imgur.com/woqb6ox.jpg",
+			"https://i.imgur.com/yZSVo6y.jpg"
+		],
+		"video": [
+			{
+				"message": "contestant sent video to the judges individually."
+			}
+		]
+	},
+	{
+		"contestant": "15",
+		"discord": "@jCristalla#6092",
+		"verification": [
+			"http://oi64.tinypic.com/2nvcv2c.jpg"
+		],
+		"banano": [
+			"http://oi64.tinypic.com/k1rnyt.jpg"
+		],
+		"video": [
+			{
+				"thumbnail": "https://img.youtube.com/vi/slpTp1CHorI/default.jpg",
+				"video": "https://youtu.be/slpTp1CHorI"
+			}
+		]
+	},
+	{
+		"contestant": "16",
+		"discord": "@Victoriagc#3997",
+		"verification": [
+			"https://i.imgur.com/Qaqzfio.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/8IR55OV.jpg"
+		],
+		"video": [
+			{
+				"message": "contestant sent video to the judges individually."
+			}
+		]
+	},
+	{
+		"contestant": "17",
+		"discord": "@mara19#6714",
+		"verification": [
+			"https://i.imgur.com/eHqQQOg.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/6DRzLrW.jpg"
+		],
+		"video": [
+			{
+				"message": "contestant sent video to the judges individually."
+			}
+		]
+	},
+	{
+		"contestant": "18",
+		"discord": "@Cocha#9303",
+		"verification": [
+			"https://i.imgur.com/MuaWxKF.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/gxueUJT.jpg"
+		],
+		"video": [
+			{
+				"message": "contestant sent video to the judges individually."
+			}
+		]
+	},
+	{
+		"contestant": "19",
+		"discord": "@Sun#1952",
+		"verification": [
+			"https://i.imgur.com/o8R9PsE.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/rvi0KOn.jpg"
+		],
+		"video": [
+			{
+				"thumbnail": "https://img.youtube.com/vi/aNS6ZwlxVmA/default.jpg",
+				"video": "https://youtu.be/aNS6ZwlxVmA"
+			}
+		]
+	},
+	{
+		"contestant": "20",
+		"discord": "@Team Junglo Arisbelyz#7758",
+		"verification": [
+			"https://i.imgur.com/Rs1lvG4.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/f0vFwM3.jpg"
+		],
+		"video": [
+			{
+				"thumbnail": "https://img.youtube.com/vi/yvyBQhHrXJY/default.jpg",
+				"video": "https://youtu.be/yvyBQhHrXJY"
+			}
+		]
 	}
+	
+	
 ]
