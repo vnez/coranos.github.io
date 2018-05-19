@@ -146,5 +146,21 @@
 				"video": "https://youtu.be/QDbuUaDOjDA"
 			}
 		]
+	},
+	{
+		"contestant": "11",
+		"discord": "@Nazareth#6006",
+		"verification": [
+			"https://i.imgur.com/w5LWbLM.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/0BedBcd.jpg"
+		],
+		"video": [
+			{
+				"thumbnail": "https://img.youtube.com/vi/9hKicNDXZqo/default.jpg",
+				"video": "https://youtu.be/9hKicNDXZqo"
+			}
+		]
 	}
 ]
