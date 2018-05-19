@@ -22,6 +22,11 @@
   font-family: monospace;
 }
 
+.thumbnail {
+  height: 100px;
+  max-width: 100%;
+}
+
 .centered_text {
   text-align: center;
 }
@@ -299,20 +304,20 @@
   <script src='../../../js-lib/json-table.js'></script>
   <script>
       callGoogleTracker();
-      
-      function processVideoArray(videos) {
+
+      function processVideoArray (videos) {
         let result = ''
         for (let videoIx = 0; videoIx < videos.length; videoIx++) {
-          result += '<a target="_blank" href="' + videos[videoIx].video + '"><img width=100 height=100 src="' + videos[videoIx].thumbnail + '" />';
+          result += '<a target="_blank" href="' + videos[videoIx].video + '"><img class="thumbnail" src="' + videos[videoIx].thumbnail + '" />';
           // result += '<iframe width="100" height="100" src="' + videos[videoIx] + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
         }
         return result;
       }
-      
-      function processImageArray(images) {
+
+      function processImageArray (images) {
         let result = ''
         for (let imageIx = 0; imageIx < images.length; imageIx++) {
-          result += '<a target="_blank" href="' + images[imageIx] + '"><img width=100 height=100 src="' + images[imageIx] + '" />';
+          result += '<a target="_blank" href="' + images[imageIx] + '"><img class="thumbnail" src="' + images[imageIx] + '" />';
         }
         return result;
       }
