@@ -67,5 +67,29 @@
 				"video": "https://youtu.be/eq97GIoyoDY"
 			}
 		]
+	},
+	{
+		"contestant": "5",
+		"discord": "@yourgrandpasbutthole#4646",
+		"verification": [
+			"https://i.imgur.com/Bnt56Lk.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/85WFWEF.jpg"
+		],
+		"video": [
+		]
+	},
+	{
+		"contestant": "6",
+		"discord": "@EmptyTotal#8620",
+		"verification": [
+			"https://imgur.com/CEmDIc8.png"
+		],
+		"banano": [
+			"https://imgur.com/2OE3R3u.jpg"
+		],
+		"video": [
+		]
 	}
 ]
