@@ -74,7 +74,12 @@
 			"https://i.imgur.com/85WFWEF.jpg",
 			"https://i.imgur.com/Oep36Ew.jpg"
 		],
-		"video": []
+		"video": [
+			{
+				"thumbnail": "https://img.youtube.com/vi/cbLfULUyrBI/default.jpg",
+				"video": "https://youtu.be/cbLfULUyrBI"
+			}
+		]
 	},
 	{
 		"contestant": "6",

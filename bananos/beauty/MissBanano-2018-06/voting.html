@@ -1,0 +1,173 @@
+<!DOCTYPE html5>
+<html>
+<meta charset="utf-8" />
+<head>
+<title>Miss Banano June 2018 - Community Pageant - Sponsored by La Jungla -Voting</title>
+<style type='text/css'>
+.titles {
+  font-family: monospace;
+  font-size: 10px;
+}
+
+.centered {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.solid_border {
+  border: solid;
+  border-width: 0.5px;
+  font-family: monospace;
+}
+
+.thumbnail {
+  height: 100px;
+  max-width: 100%;
+}
+
+.centered_text {
+  text-align: center;
+}
+
+.rules_column {
+  width: 20%;
+  text-align: left;
+  vertical-align: top;
+}
+
+.rankup {
+  display: block;
+  border: solid;
+  text-align: center;
+  border-width: 0.5px;
+  font-family: monospace;
+}
+
+.rankdown {
+  display: block;
+  border: solid;
+  text-align: center;
+  border-width: 0.5px;
+  font-family: monospace;
+}
+</style>
+</head>
+<body onload="onLoad();">
+  <h2>Judges</h2>
+  <ul>
+    <li>@Coranos#4281</li>
+    <li>@Super Betta Fish 🐡 (RAINMASTER)#3900</li>
+    <li>@ChocolateFudCake#1337</li>
+    <li>@Bbedward#9246</li>
+    <li>@Seeker214#3392</li>
+    <li>@👑King Kong👑#1771</li>
+    <li>@Flightless_Pig#3603</li>
+    <li>Team.Junglo.Andreiniana.👽#3438</li>
+  </ul>
+  <table id='dataTable' class='solid_border' style="width: 100%">
+    <thead class='solid_border'>
+    </thead>
+    <tbody class='solid_border'>
+    </tbody>
+  </table>
+  <script src="../../../js-lib/google-tracking.js"></script>
+  <script src='../../../js-lib/jquery-3.2.1.js'></script>
+  <script src='../../../js-lib/load-json.js'></script>
+  <script src='../../../js-lib/json-table.js'></script>
+  <script>
+      callGoogleTracker();
+
+      function processVideoArray (videos) {
+        let result = ''
+        for (let videoIx = 0; videoIx < videos.length; videoIx++) {
+          if (videos[videoIx].message !== undefined) {
+            result += videos[videoIx].message;
+          } else {
+            result += '<a target="_blank" href="' + videos[videoIx].video + '"><img class="thumbnail" src="' + videos[videoIx].thumbnail + '" />';
+          }
+        }
+        return result;
+      }
+
+      function processImageArray (images) {
+        let result = ''
+        for (let imageIx = 0; imageIx < images.length; imageIx++) {
+          result += '<a target="_blank" href="' + images[imageIx] + '"><img class="thumbnail" src="' + images[imageIx] + '" />';
+        }
+        return result;
+      }
+
+      function getRankDisplay(contestant) {
+        return '<div class="contestant_' + contestant + '">' + contestant + '<div>';
+      }
+      
+      function getRankAdjustmentControls () {
+        return '<div class="rankup" onclick="rankup(this)">Rank Up</div><div class="rankdown" onclick="rankdown(this)">Rank Down</div>'
+      }
+
+      function rankdown (elt) {
+        console.log(elt);
+      }
+
+      function rankup (elt) {
+        console.log(elt);
+      }
+
+      function sortRows () {
+        let table = $('#dataTable').find('tbody');
+
+        $(table).find('tr').sort(function(a, b) {
+          return $('[id^=contestant]', a).text().localeCompare($('[id^=contestant]', b).text());
+          // return a.text().localeCompare(b.text());
+        });
+        
+        console.log(table);
+      }
+
+      function onLoad () {
+        jsonTable('#dataTable', {
+          head : [ 'adjust rank', 'rank', 'Contestant Number', 'Discord ID', 'Verification Photo<br> <small>Click For Larger Image</small>',
+              'Bananos<br> <small>Click For Larger Image</small>', 'Your Passion<br> <small>Click For Video' ],
+          thClass : 'solid_border centered_text',
+          trClass : 'solid_border',
+          sortTable : false
+        });
+
+        let options = {};
+        options.json = [ 'adjust_rank', 'rank', 'contestant', 'discord', 'verification', 'banano', 'video' ];
+
+        $.ajaxSetup({
+          beforeSend : function (xhr) {
+            if (xhr.overrideMimeType) {
+              xhr.overrideMimeType('application/json');
+            }
+          }
+        });
+
+        $.getJSON('contestants.json', function (results) {
+          let table = $('#dataTable').find('tbody');
+          table.empty();
+          const response = {};
+          response.results = results;
+
+          for (let dataIx = 0; dataIx < results.length; dataIx++) {
+           
+            results[dataIx].verification = processImageArray(results[dataIx].verification);
+            results[dataIx].banano = processImageArray(results[dataIx].banano);
+            results[dataIx].video = processVideoArray(results[dataIx].video);
+            results[dataIx].rank = getRankDisplay(results[dataIx].contestant);
+            results[dataIx].adjust_rank = getRankAdjustmentControls();
+          }
+
+          const row = makeRow(response, options, 'solid_border centered_text', 'solid_border centered_text');
+          table.append(row);
+
+          sortRows();
+        });
+      }
+    </script>
+</body>
+
+</html>
