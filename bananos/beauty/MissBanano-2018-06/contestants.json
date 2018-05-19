@@ -13,17 +13,16 @@
 		],
 		"video": [
 			{
-				"thumbnail":"https://img.youtube.com/vi/qr-LSnLyi-8/default.jpg",
-				"video":"https://www.youtube.com/embed/qr-LSnLyi-8"
+				"thumbnail": "https://img.youtube.com/vi/qr-LSnLyi-8/default.jpg",
+				"video": "https://www.youtube.com/embed/qr-LSnLyi-8"
 			}
 		]
-	}
-	,
+	},
 	{
 		"contestant": "2",
 		"discord": "@tefytur*#7742",
 		"verification": [
-			"https://cdn.discordapp.com/attachments/445127694724628480/447289432698257409/tefytur_id.jpg",
+			"https://cdn.discordapp.com/attachments/445127694724628480/447289432698257409/tefytur_id.jpg"
 		],
 		"banano": [
 			"https://cdn.discordapp.com/attachments/446844380360474634/447287294886543361/banana_1_tefytur.jpg",
@@ -32,8 +31,25 @@
 		],
 		"video": [
 			{
-				"thumbnail":"https://img.youtube.com/vi/io6DDPaUehA/default.jpg",
-				"video":"https://www.youtube.com/embed/io6DDPaUehA"
+				"thumbnail": "https://img.youtube.com/vi/io6DDPaUehA/default.jpg",
+				"video": "https://www.youtube.com/embed/io6DDPaUehA"
+			}
+		]
+	},
+	{
+		"contestant": "3",
+		"discord": "@jessica303#2586",
+		"verification": [
+			"https://imgur.com/LclMWbL.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/wx9mAhC.jpg"
+		],
+		"video": [
+			{
+				"thumbnail": "",
+				"video": ""
 			}
 		]
 	}
+]
