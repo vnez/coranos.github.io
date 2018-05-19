@@ -1,7 +1,7 @@
 [
 	{
 		"contestant": "1",
-		"discord": "Mayrapina#9547",
+		"discord": "@Mayrapina#9547",
 		"verification": [
 			"https://i.imgur.com/xfIrlHV.jpg",
 			"https://i.imgur.com/Gqj58BC.png"
@@ -49,6 +49,22 @@
 			{
 				"thumbnail": "",
 				"video": ""
+			}
+		]
+	},
+	{
+		"contestant": "4",
+		"discord": "@P0ar#1082",
+		"verification": [
+			"https://i.imgur.com/bJxdt4X.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/HgbtGl3.jpg"
+		],
+		"video": [
+			{
+				"thumbnail": "https://img.youtube.com/vi/eq97GIoyoDY/default.jpg",
+				"video": "https://youtu.be/eq97GIoyoDY"
 			}
 		]
 	}
