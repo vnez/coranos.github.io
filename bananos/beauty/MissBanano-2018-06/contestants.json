@@ -190,7 +190,8 @@
 		],
 		"video": [
 			{
-				"message": "contestant sent video to the judges individually."
+				"thumbnail": "https://img.youtube.com/vi/X1OQyrOk9cQ/default.jpg",
+				"video": "https://youtu.be/X1OQyrOk9cQ"
 			}
 		]
 	},
@@ -293,10 +294,10 @@
 		"contestant": "20",
 		"discord": "@Team Junglo Arisbelyz#7758",
 		"verification": [
-			"https://i.imgur.com/Rs1lvG4.jpg"
+			"https://i.imgur.com/CyLCh1m.jpg"
 		],
 		"banano": [
-			"https://i.imgur.com/f0vFwM3.jpg"
+			"https://i.imgur.com/4lnLfVU.jpg"
 		],
 		"video": [
 			{
