@@ -305,7 +305,21 @@
 				"video": "https://youtu.be/yvyBQhHrXJY"
 			}
 		]
+	},
+	{
+		"contestant": "21",
+		"discord": "@MariaSicarios Team#5727",
+		"verification": [
+			"https://i.imgur.com/Q7meFau.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/0xphoOI.jpg"
+		],
+		"video": [
+			{
+				"thumbnail": "https://img.youtube.com/vi/r5lEfeQHOzw/default.jpg",
+				"video": "https://youtu.be/r5lEfeQHOzw"
+			}
+		]
 	}
-	
-	
 ]
