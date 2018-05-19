@@ -45,8 +45,7 @@
 		"banano": [
 			"https://i.imgur.com/wx9mAhC.jpg"
 		],
-		"video": [
-		]
+		"video": []
 	},
 	{
 		"contestant": "4",
@@ -73,8 +72,7 @@
 		"banano": [
 			"https://i.imgur.com/85WFWEF.jpg"
 		],
-		"video": [
-		]
+		"video": []
 	},
 	{
 		"contestant": "6",
@@ -85,8 +83,7 @@
 		"banano": [
 			"https://imgur.com/2OE3R3u.jpg"
 		],
-		"video": [
-		]
+		"video": []
 	},
 	{
 		"contestant": "7",
@@ -97,8 +94,7 @@
 		"banano": [
 			"https://i.imgur.com/9i83CIa.jpg"
 		],
-		"video": [
-		]
+		"video": []
 	},
 	{
 		"contestant": "8",
@@ -111,6 +107,26 @@
 			"https://i.imgur.com/0Sn5r3e.jpg"
 		],
 		"video": [
+			{
+				"thumbnail": "https://img.youtube.com/vi/jAovAMcvMts/default.jpg",
+				"video": "https://youtu.be/jAovAMcvMts"
+			}
+		]
+	},
+	{
+		"contestant": "9",
+		"discord": "@BanaStone#6876",
+		"verification": [
+			"https://i.imgur.com/6zzVVSf.jpg"
+		],
+		"banano": [
+			"https://i.imgur.com/zwrj0iV.jpg"
+		],
+		"video": [
+			{
+				"thumbnail": "https://img.youtube.com/vi/6cLj56zhFyk/default.jpg",
+				"video": "https://youtu.be/6cLj56zhFyk"
+			}
 		]
 	}
 ]
