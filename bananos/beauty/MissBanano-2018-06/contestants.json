@@ -18,4 +18,23 @@
 			}
 		]
 	}
+	
+	{
+		"contestant": "2",
+		"discord": "@tefytur*#7742",
+		"verification": [
+			"https://cdn.discordapp.com/attachments/445127694724628480/447289432698257409/tefytur_id.jpg",
+		],
+		"banano": [
+			"https://cdn.discordapp.com/attachments/446844380360474634/447287294886543361/banana_1_tefytur.jpg",
+			"https://cdn.discordapp.com/attachments/446844380360474634/447288541454532608/banana_3_tefytur.jpg",
+			"https://cdn.discordapp.com/attachments/446844380360474634/447288519195492362/banana_2_tefytur.jpg"
+		],
+		"video": [
+			{
+				"thumbnail":"https://img.youtube.com/vi/qr-LSnLyi-8/default.jpg",
+				"video":"https://www.youtube.com/embed/qr-LSnLyi-8"
+			}
+		]
+	}
 ]
