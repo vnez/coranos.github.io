@@ -103,16 +103,22 @@
         return '<div class="contestant_' + contestant + '">' + contestant + '<div>';
       }
       
-      function getRankAdjustmentControls () {
-        return '<div class="rankup" onclick="rankup(this)">Rank Up</div><div class="rankdown" onclick="rankdown(this)">Rank Down</div>'
+      function getRankAdjustmentControls (contestant) {
+        const variable = '\'contestant_' + contestant + '\'';
+        return '<div class="rankup" onclick="rankup(' + variable + ')">Rank Up</div><div class="rankdown" onclick="rankdown(this)">Rank Down</div>'
       }
 
-      function rankdown (elt) {
-        console.log(elt);
+      function rankdown (rankClass) {
+        console.log(rankClass);
+        const selector = '#' + rankClass;
+        console.log($(selector));
+    		$(selector).html(parseInt($(selector).html(), 10)+1)
       }
 
-      function rankup (elt) {
-        console.log(elt);
+      function rankup (rankClass) {
+        console.log(rankClass);
+        const selector = '#' + rankClass;
+		$(selector).html(parseInt($(selector).html(), 10)-1)
       }
 
       function sortRows () {
@@ -158,7 +164,7 @@
             results[dataIx].banano = processImageArray(results[dataIx].banano);
             results[dataIx].video = processVideoArray(results[dataIx].video);
             results[dataIx].rank = getRankDisplay(results[dataIx].contestant);
-            results[dataIx].adjust_rank = getRankAdjustmentControls();
+            results[dataIx].adjust_rank = getRankAdjustmentControls(results[dataIx].contestant);
           }
 
           const row = makeRow(response, options, 'solid_border centered_text', 'solid_border centered_text');
