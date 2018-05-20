@@ -1,0 +1,55 @@
+{
+	"Guidelines (Optional)": [
+		"Use good lighting. Not too dark or too bright.",
+		"Use a good background, light colors like sky blue or white usually make for a better photo",
+		"Look at the previous contestants and the internet to get good ideas"
+	],
+	"General Rules": [
+		"All Contestants must be of the age of majority.",
+		"A minor can be in the photo with the contestant, but must have clothes covering shoulders to knees.",
+		"All photos must be legal, and you agree the contest can use them for the contest, for public display.",
+		"All videos must be legal, and you agree the contest can use them for the contest, for public display.",
+		"No Ful Nudity. Partial nudity is acceptable.",
+		"No pornography.",
+		"All contestants must appear to be male. Judges have final say.",
+		"No professional photos, we don't want any copyright problems.",
+		"Avoid including anything that would help someone harras you, like your street address",
+		"Judges have final say in all matters",
+		{
+			"en": "There will be a grace period for six hours after the deadline, due to unreliable internet and power in some areas"
+		},
+		{
+			"en": "New registrations will not be taken during the grace period, so register early!"
+		},
+		{
+			"en": "Updates to submissions will be taken during the grace period."
+		},
+		{
+			"en": "New submissions will be taken during the grace period, but cannot win first place."
+		}
+	],
+	"Payouts": [
+		"Judges will rank all contestants that pass verification (If your image is not on here, you did not pass verification).",
+		"Winners will be determined by Instant Runoff Voting.",
+		"50% of the pot is first prize, 25% second prize, 12.5% third prize, and then all participants share the remaining 12.5%"
+	],
+	"Images / Videos And Identification": [
+		{
+			"Summary": [
+				"The contest will consist of one verification image, one (optional) banano image, and one (optional) video.",
+				"Please try to post the images on https://imgur.com/ and link to them",
+				"Discord sometimes makes the quality of the image lower than the original",
+				"Please try to post the videos on https://www.youtube.com/ and link to them"
+			],
+			"Image One - Identification": [
+				"The first image will be the contestant holding a white sign with their discord name on it. Your face and your discord ID must be visible."
+			],
+			"Image Two: Bananas": [
+				"The second image will be the contestant with bananas. Their face must be visible. It should be creative and have a sign that says #Bananocoin and #Team Junglo"
+			],
+			"Video: Your Strength": [
+				"The video will be of the contestant doing something they are good at."
+			]
+		}
+	]
+}
