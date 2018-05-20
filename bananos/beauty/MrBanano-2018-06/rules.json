@@ -5,7 +5,10 @@
 		"Look at the previous contestants and the internet to get good ideas"
 	],
 	"General Rules": [
-		"All Contestants must be of the age of majority.",
+		{
+			"en": "All Contestants must be of the age of majority.",
+			"img": "https://vignette.wikia.nocookie.net/lotr/images/7/70/Gandalf%3B_The_White.jpg"
+		},
 		"A minor can be in the photo with the contestant, but must have clothes covering shoulders to knees.",
 		"All photos must be legal, and you agree the contest can use them for the contest, for public display.",
 		"All videos must be legal, and you agree the contest can use them for the contest, for public display.",

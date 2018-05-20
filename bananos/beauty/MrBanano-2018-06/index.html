@@ -76,7 +76,6 @@
           } else {
             result += '<a target="_blank" href="' + videos[videoIx].video + '"><img class="thumbnail" src="' + videos[videoIx].thumbnail + '" />';
           }
-          // result += '<iframe width="100" height="100" src="' + videos[videoIx] + '" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
         }
         return result;
       }
@@ -109,7 +108,7 @@
           }
         });
 
-        $.getJSON('rules-en.json', function (results) {
+        $.getJSON('rules.json', function (results) {
           let table = $('#rulesTable').find('tbody');
           table.empty();
           
@@ -125,16 +124,24 @@
                 sectionHtml += '\n';
               } else {
                 for (const [subsection, subrules] of Object.entries(rule)) {
-                  sectionHtml += '<h3>' + subsection + '</h3>' + '\n';
-                  sectionHtml += '<ol>\n';
-                  for (let subruleIx = 0; subruleIx < subrules.length;subruleIx++) {
-                    sectionHtml += '<li>\n';
-                    const subrule = subrules[subruleIx];
-                    sectionHtml += subrule;
+                  if(subsection ==='en') {
+                    sectionHtml += subrules;
                     sectionHtml += '\n';
-                    sectionHtml += '</li>\n';
+                  } else if(subsection ==='img') {
+                    sectionHtml += '<a target="_blank" href="' + subrules + '"><img class="thumbnail" src="' + subrules + '" /></a>';
+                    sectionHtml += '\n';
+                  } else {
+                    sectionHtml += '<h3>' + subsection + '</h3>' + '\n';
+                    sectionHtml += '<ol>\n';
+                    for (let subruleIx = 0; subruleIx < subrules.length;subruleIx++) {
+                      sectionHtml += '<li>\n';
+                      const subrule = subrules[subruleIx];
+                      sectionHtml += subrule;
+                      sectionHtml += '\n';
+                      sectionHtml += '</li>\n';
+                    }
+                    sectionHtml += '</ol>\n';
                   }
-                  sectionHtml += '</ol>\n';
                 }                
               }
               sectionHtml += '</li>\n';
