@@ -326,5 +326,21 @@
 				"video": "https://youtu.be/r5lEfeQHOzw"
 			}
 		]
+	},
+	{
+		"contestant": "22",
+		"discord": "@Cattacastro#2625 ",
+		"verification": [
+			"https://cdn.discordapp.com/attachments/446403798034939916/447552593028448256/Cattacastro_id.jpg"
+		],
+		"banano": [
+			"https://cdn.discordapp.com/attachments/446403798034939916/447552616571076610/Cattacastro_banano.jpg"
+		],
+		"video": [
+			{
+				"thumbnail": "https://img.youtube.com/vi/rlOHqmlrqu0/default.jpg",
+				"video": "https://www.youtube.com/watch?v=rlOHqmlrqu0"
+			}
+		]
 	}
 ]
