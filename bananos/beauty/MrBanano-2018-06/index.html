@@ -6,33 +6,43 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body onload="onLoad();">
-  <h2>Submission Timeframe - Deadline</h2>
-  <p>Contest deadline is Saturday June 2nd 13:00 Caracas time, 5:00 PM UTC</p>
-  <p>Submissions will be accepted for six hours after the deadline, but risk being penalized (see rules below)</p>
-  <p>Results will be available during the week</p>
-  <H2>Flyers</H2>
-  <table style="width: 100% height: 300px">
+  <table style="width: 100%">
     <tr>
       <th class="solid_border centered_text">English</th>
       <th class="solid_border centered_text">Spanish</th>
       <th class="solid_border centered_text">Portuguese</th>
-      <th class="solid_border centered_text">Vietnamese</th>
-      <th class="solid_border centered_text">Russian</th>
     </tr>
     <tr>
+      <td class="solid_border centered_text">
+        <h2>Submission Timeframe - Deadline</h2>
+        <p>Contest deadline is Saturday June 2nd 13:00 Caracas time, 5:00 PM UTC</p>
+        <p>Submissions will be accepted for six hours after the deadline, but risk being penalized (see rules below)</p>
+        <p>Results will be available during the week</p>
+        <H2>Flyers</H2>
+
+        <p>This is a community contest sponsored by the la jungla discord channel.</p>
+        <p>All donations and contestants are from the community and not from the banano core team.</p>
+        <p>Banano devs (I.E. Coranos) are providing administrative support and discord id verification.</p>
+        <p>
+          <b>To register or participate, send links to your images and videos to @Coranos#4281 on discord</b>
+        </p>
+      </td>
       <td class="solid_border centered_text"></td>
-      <td class="solid_border centered_text"></td>
-      <td class="solid_border centered_text"></td>
-      <td class="solid_border centered_text"></td>
-      <td class="solid_border centered_text"></td>
+      <td class="solid_border centered_text">
+        <h2>Envio Data - Prazo Final</h2>
+        <p>O prazo final È S·bado, 02 de junho, 13:00 hor·rio de Caracas, ou 5:00 PM UTC.</p>
+        <p>Envios (banano foto, vÌdeo) ser„o aceitos atÈ seis horas depos do hor·rio limite, mas correm o risco de serem penalizados (veja regras abaixo).</p>
+        <p>Os resultados estar„o disponÌveis durante a semana.</p>
+        <H2>Folheto</H2>
+
+        <p>Este concurso È patrocinado por La Jungla canal do Discord.</p>
+        <p>Todas doaÁıes e participantes s„o da comunidade e n„o s„o ou vÍm dos dirigente da Banano (core team).</p>
+        <p>Banano devs (como Coranos) est„o fornecendo apoio administrativo e verificaÁ„o da ID do Discord.</p>
+        <p>Para participar envie links de suas imagens e vÌdeos para @Coranos#4281 no Discord.</p>
+
+      </td>
     </tr>
   </table>
-  <p>This is a community contest sponsored by the la jungla discord channel.</p>
-  <p>All donations and contestants are from the community and not from the banano core team.</p>
-  <p>Banano devs (I.E. Coranos) are providing administrative support and discord id verification.</p>
-  <p>
-    <b>To register or participate, send links to your images and videos to @Coranos#4281 on discord</b>
-  </p>
   <H3></H3>
   <h2>Judges</h2>
   <ul>
@@ -45,12 +55,8 @@
       <th class="solid_border centered_text">English</th>
       <th class="solid_border centered_text">Spanish</th>
       <th class="solid_border centered_text">Portuguese</th>
-      <th class="solid_border centered_text">Vietnamese</th>
-      <th class="solid_border centered_text">Russian</th>
     </tr>
     <tr>
-      <td class="rules_column  solid_border">
-      <td class="rules_column  solid_border">
       <td class="rules_column  solid_border">
       <td class="rules_column  solid_border">
       <td class="rules_column  solid_border">
@@ -116,8 +122,9 @@
           for (const [section, rules] of Object.entries(results)) {
             var sectionHtml = '';
             sectionHtml += '<h2>' + section + '</h2>' + '\n';
+            sectionHtml += JSON.stringify(rules[0]) + '\n';
             sectionHtml += '<ol>\n';
-            for (let ruleIx = 0; ruleIx < rules.length; ruleIx++) {
+            for (let ruleIx = 1; ruleIx < rules.length; ruleIx++) {
               const rule = rules[ruleIx];
               sectionHtml += '<li>\n';
               if(typeof rule === 'string') {
@@ -134,7 +141,7 @@
                   } else {
                     sectionHtml += '<h3>' + subsection + '</h3>' + '\n';
                     sectionHtml += '<ol>\n';
-                    for (let subruleIx = 0; subruleIx < subrules.length;subruleIx++) {
+                    for (let subruleIx = 1; subruleIx < subrules.length;subruleIx++) {
                       sectionHtml += '<li>\n';
                       const subrule = subrules[subruleIx];
                       sectionHtml += subrule;

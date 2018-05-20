@@ -1,84 +1,195 @@
 {
-	"Guidelines (Optional)": [
+	"guidelines": [
+		{
+			"title": {
+				"en": "Guidelines (Optional)",
+				"pt": "Diretrizes (opcional)"
+			}
+		},
 		{
 			"en": "Use good lighting. Not too dark or too bright.",
+			"pt": "Use uma iluminaÁ„o boa. Nem muito escuro nem claro demais.",
 			"img": "https://i.pinimg.com/originals/e9/5a/16/e95a162ee2a5a28f332c957b2efb14b9.jpg"
 		},
 		{
 			"en": "Use a good background, light colors like sky blue or white usually make for a better photo.",
+			"pt": "Use um plano de fundo adequado, azul claro ou branco s„o geralmente melhores para uma boa foto.",
 			"img": "http://i.dailymail.co.uk/i/pix/2017/01/07/14/3BEBA73700000578-4097364-image-a-59_1483797647357.jpg"
 		},
 		{
 			"en": "Look at the previous contestants and the internet to get good ideas.",
+			"pt": "DÍ uma olhada nos concorrentes e pela internet para ter boas idÈias.",
 			"img": "https://i.pinimg.com/originals/49/1c/53/491c53e51ec33b443337ae50c106c251.jpg"
 		}
 	],
-	"General Rules": [
+	"general_rules": [
+		{
+			"title": {
+				"en": "General Rules",
+				"pt": "Regras Gerais"
+			}
+		},
 		{
 			"en": "All Contestants must be of the age of majority.",
+			"pt": "Todos concorrentes devem ser maior de idade.",
 			"img": "https://vignette.wikia.nocookie.net/lotr/images/7/70/Gandalf%3B_The_White.jpg"
 		},
 		{
 			"en": "A minor can be in the photo and the video with the contestant, but must have clothes covering shoulders to knees.",
+			"pt": "Um menor de idade pode estar na foto e video com o concorrente, mas deve ter roupas cobrindo os ombros e joelhos.",
 			"img": "https://i.pinimg.com/originals/05/64/6f/05646f5b70a847eb5869745cf616c824.jpg"
 		},
 		{
 			"en": "All photos and videos must be legal, and you agree the contest can use them for the contest, for public display.",
+			"pt": "Todas as fotos e vÌdeos devem ser legais e vocÍ concorda que o concurso use-os para divulgaÁ„o p˙blica.",
 			"img": "http://i0.kym-cdn.com/entries/icons/original/000/024/187/hitler.jpg"
 		},
 		{
 			"en": "No Full Nudity. Partial nudity is acceptable.",
+			"pt": "Sem nudez total. Nudez parcial È aceit·vel.",
 			"img": "https://media.gettyimages.com/photos/no-nudity-sign-on-cala-xarraca-beach-picture-id520282646"
 		},
 		{
 			"en": "No pornography, no condoms, no or other items used exclusively for sex related activities.",
+			"pt": "Sem pornografia, sem camisinhas ou outros itens usados exclusivamente para atividades sexuais.",
 			"img": "https://media.boingboing.net/wp-content/uploads/2018/03/storm.jpeg"
 		},
 		{
 			"en": "All contestants must appear to be male. Judges have final say.",
+			"pt": "Todos participantes devem parecer homens. Os juurados tem a palavra final.",
 			"img": "https://vignette.wikia.nocookie.net/lotr/images/9/97/Eowyn-wiki.jpg/revision/latest?cb=20060311102040"
 		},
 		{
 			"en": "No professional photos, we don't want any copyright problems.",
+			"pt": "Sem fotos profissionais para que n„o tenhamos problemas com direitos autorais (copyright).",
 			"img": "https://3.img-dpreview.com/files/p/E~TS590x0~articles/7323283771/monkey1.jpeg"
 		},
 		{
 			"en": "If you are actually a professional photographer taking a photo of yourself, then that is ok.",
+			"pt": "Se vocÍ È um fotÛgrafo profissional de verdade tirando uma foto de vocÍ mesmo ent„o tudo bem.",
 			"img": "https://cms-assets.tutsplus.com/uploads/users/80/posts/26806/image/70-Selfies.jpg"
 		},
 		{
 			"en": "Avoid including anything that would help someone harrass you, like your street address.",
+			"pt": "Evite incluir qualquer coisa que ajude alguÈm a perseguÌ-lo, como a rua de sua residÍncia.",
 			"img": "https://psimonmyway.com/wp-content/uploads/2017/04/16908419_426302601048263_6690234285980385280_n-1024x700.jpg"
 		}
 	],
-	"Judgements and Timelines": [
-		"Judges have final say in all matters.",
-		"There will be a grace period for six hours after the deadline, due to unreliable internet and power in some areas.",
-		"New registrations will not be taken during the grace period, so register early!",
-		"Updates to submissions will be taken during the grace period.",
-		"New submissions will be taken during the grace period, but cannot win first place."
-	],
-	"Payouts": [
-		"Judges will rank all contestants that pass verification (If your image is not on here, you did not pass verification).",
-		"Winners will be determined by Instant Runoff Voting.",
-		"50% of the pot is first prize, 25% second prize, 12.5% third prize, and then all participants share the remaining 12.5%."
-	],
-	"Images / Videos And Identification": [
+	"judgements_and_timelines": [
 		{
-			"Summary": [
-				"The contest will consist of one verification image, one (optional) banano image, and one (optional) video.",
-				"Please try to post the images on https://imgur.com/ and link to them.",
-				"Discord sometimes makes the quality of the image lower than the original.",
-				"Please try to post the videos on https://www.youtube.com/ and link to them."
+			"title": {
+				"en": "Judgements and Timelines",
+				"pt": "Julgamentos e Prazos"
+			}
+		},
+		{
+			"en": "Judges have final say in all matters.",
+			"pt": "Os jurados tem a palavra final em todas as questÙes."
+		},
+		{
+			"en": "There will be a grace period for six hours after the deadline, due to unreliable internet and power in some areas.",
+			"pt": "Haver· um perÌodo de toler‚ncia de seis horas depois do hor·rio limite devido a internet e luz inst·vel em algumas regiıes."
+		},
+		{
+			"en": "New registrations will not be taken during the grace period, so register early!",
+			"pt": "Novos registros n„o ser„o aceitos durante o perÌodo de toler‚ncia, ent„o se registre o quanto antes!"
+		},
+		{
+			"en": "Updates to submissions will be taken during the grace period.",
+			"pt": "AtualizaÁıes de registros ser„o aceitos no perÌodo de toler‚ncia."
+		},
+		{
+			"en": "New submissions will be taken during the grace period, but cannot win first place.",
+			"pt": "Novos envios (banano foto, vÌdeo) ser„o aceitos no perÌodo de toler‚ncia, mas n„o poder„o ganhar o primeiro lugar."
+		}
+	],
+	"payouts": [
+		{
+			"title": {
+				"en": "Payouts",
+				"pt": "Pagamentos"
+			}
+		},
+		{
+			"en": "Judges will rank all contestants that pass verification (If your image is not on here, you did not pass verification).",
+			"pt": "Os jurados v„o classificar todos concorrentes que passem pela verificaÁ„o (Se sua imagem n„o est· aqui, vocÍ n„o se qualificou na verificaÁ„o)."
+		},
+		{
+			"en": "Winners will be determined by Instant Runoff Voting.",
+			"pt": "Os vencedores ser„o determinados pelo sistema de Segundo Turno Instant‚neo (Instant-runoff voting)."
+		},
+		{
+			"en": "50% of the pot is first prize, 25% second prize, 12.5% third prize, and then all participants share the remaining 12.5%.",
+			"pt": "50% do total arrecadado È do primeiro lugar, 25% do segundo lugar, 12,5% terceiro lugar, e ent„o todos os outros participantes compartilhar„o os 12,5% restantes."
+		}
+	],
+	"images_videos_and_identification": [
+		{
+			"title": {
+				"en": "Images / Videos And Identification",
+				"pt": "Imagens/VÌdeos e IdentificaÁ„o"
+			}
+		},
+		{
+			"summary": [
+				{
+					"title": {
+						"en": "Summary",
+						"pt": "Resumo"
+					}
+				},
+				{
+					"en": "The contest will consist of one verification image, one (optional) banano image, and one (optional) video.",
+					"pt": "O concurso consistir· de uma imagem de identificaÁ„o, uma (opcional) imagem com bananas e um (opcional) vÌdeo."
+				},
+				{
+					"en": "Please try to post the images on https://imgur.com/ and link to them.",
+					"pt": "Por favor, tente postar as imagens no site https://imgur.com/ e link elas."
+				},
+				{
+					"en": "Discord sometimes makes the quality of the image lower than the original.",
+					"pt": "O Discord ‡s vezes deixa a qualidade da imagem inferior ‡ original."
+				},
+				{
+					"en": "Please try to post the videos on https://www.youtube.com/ and link to them.",
+					"pt": "Por favor, tente postar os vÌdeos em https://www.youtube.com/ e link eles."
+				}
 			],
-			"Image One - Identification (Required, Must Submit Before Deadline)": [
-				"The first image will be the contestant holding a white sign with their discord name on it. Your face and your discord ID must be visible."
+			"identification": [
+				{
+					"title": {
+						"en": "Image One - Identification (Required, Must Submit Before Deadline)",
+						"pt": "Imagem UM: IdentificaÁ„o (ObrigatÛrio, Deve ser enviada ANTES do hor·rio limite)"
+					}
+				},
+				{
+					"en": "The first image will be the contestant holding a white sign with their discord name on it. Your face and your discord ID must be visible.",
+					"pt": "A primeira imagem tem de ser o participante segurando um suporte/papel branco (ou tabela, quadro) com seu apelido no Discord escrito nele (com o n˙mero). Seu rosto e Discord ID devem estar visÌveis."
+				}
 			],
-			"Image Two: Bananas (Optional, Must Submit Before Grace Period is over)": [
-				"The second image will be the contestant with bananas. Their face must be visible. It should be creative and have a sign that says #Bananocoin and #Team Junglo."
+			"bananos": [
+				{
+					"title": {
+						"en": "Image Two: Bananas (Optional, Must Submit Before Grace Period is over)",
+						"pt": "Imagem DOIS: Bananas (Opcional, Deve ser enviada antes que o perÌodo de toler‚ncia acabe)"
+					}
+				},
+				{
+					"en": "The second image will be the contestant with bananas. Their face must be visible. It should be creative and have a sign that says #Bananocoin and #Team Junglo.",
+					"pt": "A segunda imagem tem de ser o participante com bananas. Seu rosto deve estar visÌvel. Deve ser criativo e ter um quadro ou papel com os dizeres #Bananocoin e #Team Junglo."
+				}
 			],
-			"Video: Your Strength (Optional, Must Submit Before Grace Period is over)": [
-				"The video will be of the contestant doing something they are good at."
+			"strength": [
+				{
+					"title": {
+						"en": "Video: Your Strength (Optional, Must Submit Before Grace Period is over)",
+						"pt": "VÌdeo: Sua ForÁa (Opcional, Deve ser enviado antes que o perÌodo de toler‚ncia acabe)"
+					}
+				},
+				{
+					"en": "The video will be of the contestant doing something they are good at.",
+					"pt": "No vÌdeo o participante deve estar fazendo algo no qual ele seja bom."
+				}
 			]
 		}
 	]
