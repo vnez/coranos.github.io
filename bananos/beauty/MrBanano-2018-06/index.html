@@ -91,7 +91,7 @@
 
       function onLoad () {
         jsonTable('#dataTable', {
-          head : [ 'Contestant Number', 'Discord ID', 'Verification Photo<br> <small>Click For Larger Image</small>',
+          head : [ 'Contestant Number','Registration Date and Time','Discord ID', 'Verification Photo<br> <small>Click For Larger Image</small>',
               'Bananos<br> <small>Click For Larger Image</small>', 'Your Strength<br> <small>Click For Video' ],
           thClass : 'solid_border centered_text',
           trClass : 'solid_border',
@@ -99,7 +99,7 @@
         });
 
         let options = {};
-        options.json = [ 'contestant', 'discord', 'verification', 'banano', 'video' ];
+        options.json = [ 'contestant','entry-date-time-yyyy-mon-dd-hh-mm-utc','discord', 'verification', 'banano', 'video' ];
 
         $.ajaxSetup({
           beforeSend : function (xhr) {
