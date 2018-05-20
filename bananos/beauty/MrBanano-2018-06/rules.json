@@ -71,13 +71,13 @@
 				"Discord sometimes makes the quality of the image lower than the original.",
 				"Please try to post the videos on https://www.youtube.com/ and link to them."
 			],
-			"Image One - Identification": [
+			"Image One - Identification (Required, Must Submit Before Deadline)": [
 				"The first image will be the contestant holding a white sign with their discord name on it. Your face and your discord ID must be visible."
 			],
-			"Image Two: Bananas": [
+			"Image Two: Bananas (Optional, Must Submit Before Grace Period is over)": [
 				"The second image will be the contestant with bananas. Their face must be visible. It should be creative and have a sign that says #Bananocoin and #Team Junglo."
 			],
-			"Video: Your Strength": [
+			"Video: Your Strength (Optional, Must Submit Before Grace Period is over)": [
 				"The video will be of the contestant doing something they are good at."
 			]
 		}
