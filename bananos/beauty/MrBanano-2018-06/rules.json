@@ -13,6 +13,7 @@
 		"No pornography.",
 		"All contestants must appear to be male. Judges have final say.",
 		"No professional photos, we don't want any copyright problems.",
+		"If you are actually a professional photographer taking a photo of yourself, then that is ok.",
 		"Avoid including anything that would help someone harras you, like your street address",
 		"Judges have final say in all matters",
 		{
@@ -27,6 +28,7 @@
 		{
 			"en": "New submissions will be taken during the grace period, but cannot win first place."
 		}
+		"If you are actually a professional photographer taking a photo of yourself, then that is ok."
 	],
 	"Payouts": [
 		"Judges will rank all contestants that pass verification (If your image is not on here, you did not pass verification).",
