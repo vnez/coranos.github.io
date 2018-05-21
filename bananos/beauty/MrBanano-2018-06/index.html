@@ -8,8 +8,12 @@
 <body onload="onLoad();">
   <H1>46,000 BANANO</H1>
   <ol>
+    <li>Raizen = 30,000</li>
     <li>Coranos = 10,000</li>
-    <li>
+    <li>junglo = 5000</li>
+    <li>mg = 100</li>
+    <li>astro = 100</li>
+    <li>sivulla = 100</li>
   </ol>
   <table style="width: 100%">
     <tr>
@@ -53,6 +57,7 @@
   <ul>
     <li>@Coranos#4281</li>
     <li>@astro#4372</li>
+    <li>@Raizen______#1886</li>
   </ul>
   <H1 class="solid_border centered_text">Rules</H1>
   Images courtesy of our meme and pun channel.
@@ -103,7 +108,7 @@
 
       function onLoad () {
         jsonTable('#dataTable', {
-          head : [ 'Contestant Number','Registration Date and Time','Discord ID', 'Verification Photo<br> <small>Click For Larger Image</small>',
+          head : [ 'Contestant Number','Registration Date and Time (UTC)','Discord ID', 'Verification Photo<br> <small>Click For Larger Image</small>',
               'Bananos<br> <small>Click For Larger Image</small>', 'Your Strength<br> <small>Click For Video' ],
           thClass : 'solid_border centered_text',
           trClass : 'solid_border',
@@ -147,6 +152,7 @@
                   } else if(subsection ==='img') {
                     sectionHtml += '<a target="_blank" href="' + subrules + '"><img class="thumbnail" src="' + subrules + '" /></a>';
                     sectionHtml += '\n';
+                    sectionHtml += '<p></p>\n';
                   } else {
                     sectionHtml += '<!-- ' + subsection + ' -->' + '\n';
                     sectionHtml += '<h3>' + subrules[0].title.en + '</h3>' + '\n';
