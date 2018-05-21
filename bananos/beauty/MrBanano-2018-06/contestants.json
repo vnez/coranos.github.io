@@ -15,5 +15,23 @@
 				"video": "https://www.youtube.com/embed/EdTqhK-cqKw"
 			}
 		]
-	}
+	},
+	{
+		"contestant": "2",
+		"entry-date-time-yyyy-mon-dd-hh-mm-utc":"2018-05-21 3:00",
+		"discord": "astro#4372",
+		"verification": [
+			""
+		],
+		"banano": [
+			""
+		],
+		"video": [
+			{
+				"thumbnail": "https://img.youtube.com/vi//default.jpg",
+				"video": "https://www.youtube.com/embed/"
+			}
+		]
+	},
+	
 ]
