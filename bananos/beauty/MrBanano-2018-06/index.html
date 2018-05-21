@@ -121,8 +121,8 @@
           
           for (const [section, rules] of Object.entries(results)) {
             var sectionHtml = '';
-            sectionHtml += '<h2>' + section + '</h2>' + '\n';
-            sectionHtml += JSON.stringify(rules[0]) + '\n';
+            sectionHtml += '<!-- ' + section + ' -->' + '\n';
+            sectionHtml += '<h2>' + rules[0].title.en + '</h2>' + '\n';
             sectionHtml += '<ol>\n';
             for (let ruleIx = 1; ruleIx < rules.length; ruleIx++) {
               const rule = rules[ruleIx];
@@ -134,18 +134,24 @@
                 for (const [subsection, subrules] of Object.entries(rule)) {
                   if(subsection ==='en') {
                     sectionHtml += subrules;
-                    sectionHtml += '\n';
+                    sectionHtml += '<br>\n';
+                  } else if(subsection ==='pt') {
+                    sectionHtml += subrules;
+                    sectionHtml += '<br>\n';
                   } else if(subsection ==='img') {
                     sectionHtml += '<a target="_blank" href="' + subrules + '"><img class="thumbnail" src="' + subrules + '" /></a>';
                     sectionHtml += '\n';
                   } else {
-                    sectionHtml += '<h3>' + subsection + '</h3>' + '\n';
+                    sectionHtml += '<!-- ' + subsection + ' -->' + '\n';
+                    sectionHtml += '<h3>' + subrules[0].title.en + '</h3>' + '\n';
                     sectionHtml += '<ol>\n';
                     for (let subruleIx = 1; subruleIx < subrules.length;subruleIx++) {
                       sectionHtml += '<li>\n';
                       const subrule = subrules[subruleIx];
-                      sectionHtml += subrule;
-                      sectionHtml += '\n';
+                      for (const [lang, translation] of Object.entries(subrule)) {
+                          sectionHtml += translation;
+                          sectionHtml += '<br>\n';
+                      }
                       sectionHtml += '</li>\n';
                     }
                     sectionHtml += '</ol>\n';
