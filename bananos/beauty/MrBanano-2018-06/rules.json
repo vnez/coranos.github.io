@@ -40,7 +40,7 @@
 			"img": "https://i.pinimg.com/originals/05/64/6f/05646f5b70a847eb5869745cf616c824.jpg"
 		},
 		{
-			"en": "All photos and videos must be legal, and you agree the contest can use them for the contest, for public display.",
+			"en": "All photos and videos must be legal, and you agree the contest can use them for the contest, visible to the public (not just to judges).",
 			"pt": "Todas as fotos e vÌdeos devem ser legais e vocÍ concorda que o concurso use-os para divulgaÁ„o p˙blica.",
 			"img": "http://i0.kym-cdn.com/entries/icons/original/000/024/187/hitler.jpg"
 		},
@@ -121,6 +121,10 @@
 		{
 			"en": "50% of the pot is first prize, 25% second prize, 12.5% third prize, and then all participants share the remaining 12.5%.",
 			"pt": "50% do total arrecadado È do primeiro lugar, 25% do segundo lugar, 12,5% terceiro lugar, e ent„o todos os outros participantes compartilhar„o os 12,5% restantes."
+		},
+		{
+			"en": "The judge's votes will be published publicly for verification.",
+			"pt": "Need Translation."
 		}
 	],
 	"images_videos_and_identification": [
@@ -143,7 +147,7 @@
 					"pt": "O concurso consistir· de uma imagem de identificaÁ„o, uma (opcional) imagem com bananas e um (opcional) vÌdeo."
 				},
 				{
-					"en": "Please try to post the images on https://imgur.com/ and link to them.",
+					"en": "Please try to post the images on https://imgur.com/ and link to them. If you are not comfortable using your personal account, Coranos can host them for you.",
 					"pt": "Por favor, tente postar as imagens no site https://imgur.com/ e link elas."
 				},
 				{
@@ -151,7 +155,7 @@
 					"pt": "O Discord ‡s vezes deixa a qualidade da imagem inferior ‡ original."
 				},
 				{
-					"en": "Please try to post the videos on https://www.youtube.com/ and link to them.",
+					"en": "Please try to post the videos on https://www.youtube.com/ and link to them.  If you are not comfortable using your personal account, Coranos can host them for you.",
 					"pt": "Por favor, tente postar os vÌdeos em https://www.youtube.com/ e link eles."
 				}
 			],

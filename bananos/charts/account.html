@@ -29,6 +29,10 @@
   background-color: #FF0000;
 }
 
+.legacy {
+  background-color: #777777;
+}
+
 form {
   display: inline;
 }
@@ -52,14 +56,14 @@ form {
       }
       function onLoad () {
         jsonTable('#dataTable', {
-          head : [ 'Banano Rank', 'Account', 'Banano','Tx','Reddit','Discord','Burned' ],
+          head : [ 'Banano Rank', 'Account', 'Banano','Tx','Reddit','Discord','Burned','Legacy' ],
           thClass : 'solid',
           trClass : 'solid',
           sortTable : false
         });
 
         let options = {};
-        options.json = [ 'rank', 'account', 'balance','tx','reddit','discord','burned' ];
+        options.json = [ 'rank', 'account', 'balance','tx','reddit','discord','burned','legacy' ];
 
         $.ajaxSetup({
           beforeSend : function (xhr) {
@@ -128,6 +132,9 @@ form {
               response.results[dataIx].burned = burnAccountSet.has(response.results[dataIx].account);
               if(response.results[dataIx].burned) {
                 response.results[dataIx].tdclass = 'solid burned';
+              }
+              if(response.results[dataIx].legacy) {
+                response.results[dataIx].tdclass = 'solid legacy';
               }
             }
             
