@@ -156,7 +156,7 @@
 		{
 			"title": {
 				"en": "Images / Videos And Identification",
-				"es"; "Imágenes/ Videos e Identificación",
+				"es": "Imágenes/ Videos e Identificación",
 				"pt": "Imagens/VÌdeos e IdentificaÁ„o"
 			}
 		},
@@ -171,18 +171,22 @@
 				},
 				{
 					"en": "The contest will consist of one verification image, one (optional) banano image, and one (optional) video.",
+					"es": "El concurso consistirá en una imágen de identificación, una (opcional) con bananas y un video (opcional).";
 					"pt": "O concurso consistir· de uma imagem de identificaÁ„o, uma (opcional) imagem com bananas e um (opcional) vÌdeo."
 				},
 				{
 					"en": "Please try to post the images on https://imgur.com/ and link to them. If you are not comfortable using your personal account, Coranos can host them for you.",
+					"es": "Por favor trate de subir sus imágenes a https://imgur.com/ y envie un link de ellas. Si no se siente cómodo alojándolas en su cuenta personal, Coranos puede subirlas a su página.",
 					"pt": "Por favor, tente postar as imagens no site https://imgur.com/ e link elas."
 				},
 				{
 					"en": "Discord sometimes makes the quality of the image lower than the original.",
+					"es": "Discord a veces hace la calidad del video e imágen inferior a la original.",
 					"pt": "O Discord ‡s vezes deixa a qualidade da imagem inferior ‡ original."
 				},
 				{
 					"en": "Please try to post the videos on https://www.youtube.com/ and link to them.  If you are not comfortable using your personal account, Coranos can host them for you.",
+					"es": "Por favor trate de publicar sus videos en https://www.youtube.com/ y enviar el link. Si no se siente cómodo usando su cuenta personal, Coranos puede publicarlos por usted.",
 					"pt": "Por favor, tente postar os vÌdeos em https://www.youtube.com/ e link eles."
 				}
 			],
@@ -190,11 +194,13 @@
 				{
 					"title": {
 						"en": "Image One - Identification (Required, Must Submit Before Deadline)",
+						"es": "Imagen 1 - Identificación (Obligatoria, Debe ser enviada antes del plazo límite)",
 						"pt": "Imagem UM: IdentificaÁ„o (ObrigatÛrio, Deve ser enviada ANTES do hor·rio limite)"
 					}
 				},
 				{
 					"en": "The first image will be the contestant holding a white sign with their discord name on it. Your face and your discord ID must be visible.",
+					"es": "La primera imágen será del participante sosteniendo un cartel/papel blanco con su nombre de discord en el. El rostro y nombre de discord (discord ID) tienen que ser visibles.",
 					"pt": "A primeira imagem tem de ser o participante segurando um suporte/papel branco (ou tabela, quadro) com seu apelido no Discord escrito nele (com o n˙mero). Seu rosto e Discord ID devem estar visÌveis."
 				}
 			],
@@ -202,11 +208,13 @@
 				{
 					"title": {
 						"en": "Image Two: Bananas (Optional, Must Submit Before Grace Period is over)",
+						"es": "Imágen 2: Bananas (Opcional, Debe ser enviada antes de que termine el periodo de gracia)",
 						"pt": "Imagem DOIS: Bananas (Opcional, Deve ser enviada antes que o perÌodo de toler‚ncia acabe)"
 					}
 				},
 				{
 					"en": "The second image will be the contestant with bananas. Their face must be visible. It should be creative and have a sign that says #Bananocoin and #Team Junglo.",
+					"es": "La segunda imágen será del participante con bananas. El rostro debe estár visible. Debe ser creativo y tener un cartel que diga #Bananocoin y #Team Junglo.",
 					"pt": "A segunda imagem tem de ser o participante com bananas. Seu rosto deve estar visÌvel. Deve ser criativo e ter um quadro ou papel com os dizeres #Bananocoin e #Team Junglo."
 				}
 			],
@@ -214,11 +222,13 @@
 				{
 					"title": {
 						"en": "Video: Your Strength (Optional, Must Submit Before Grace Period is over)",
+						"es": "Video: Tu fortaleza (Opcional, Debe ser enviado antes que el periodo de gracia acabe)",
 						"pt": "VÌdeo: Sua ForÁa (Opcional, Deve ser enviado antes que o perÌodo de toler‚ncia acabe)"
 					}
 				},
 				{
 					"en": "The video will be of the contestant doing something they are good at.",
+					"es": "El video será del participante haciendo algo en lo que son buenos.",
 					"pt": "No vÌdeo o participante deve estar fazendo algo no qual ele seja bom."
 				}
 			]
