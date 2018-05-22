@@ -99,22 +99,27 @@
 		},
 		{
 			"en": "Judges have final say in all matters.",
+			"es": "Los jurados tienen la palabra final en todas las cuestiones.",
 			"pt": "Os jurados tem a palavra final em todas as questÙes."
 		},
 		{
 			"en": "There will be a grace period for six hours after the deadline, due to unreliable internet and power in some areas.",
+			"es": "Habrá un periodo de gracia de seis horas después del limite de horario, debido a conexión de internet poco confiable y cortes de luz en algunas áreas."
 			"pt": "Haver· um perÌodo de toler‚ncia de seis horas depois do hor·rio limite devido a internet e luz inst·vel em algumas regiıes."
 		},
 		{
 			"en": "New registrations will not be taken during the grace period, so register early!",
+			"es": "Nuevos registros no ocurriran en el periodo de gracia, así que registrense temprano!",
 			"pt": "Novos registros n„o ser„o aceitos durante o perÌodo de toler‚ncia, ent„o se registre o quanto antes!"
 		},
 		{
 			"en": "Updates to submissions will be taken during the grace period.",
+			"es": "Actualizaciones de los registros serán aceptados durante el periodo de gracia.",
 			"pt": "AtualizaÁıes de registros ser„o aceitos no perÌodo de toler‚ncia."
 		},
 		{
 			"en": "New submissions will be taken during the grace period, but cannot win first place.",
+			"es": "Nuevos envios (banano foto, video) serán aceptados durante el periodo de gracia, pero no podrán ganar el primer lugar.",
 			"pt": "Novos envios (banano foto, vÌdeo) ser„o aceitos no perÌodo de toler‚ncia, mas n„o poder„o ganhar o primeiro lugar."
 		}
 	],
@@ -122,6 +127,7 @@
 		{
 			"title": {
 				"en": "Payouts",
+				"es": "Pagos",
 				"pt": "Pagamentos"
 			}
 		},
