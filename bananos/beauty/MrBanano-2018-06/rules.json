@@ -104,7 +104,7 @@
 		},
 		{
 			"en": "There will be a grace period for six hours after the deadline, due to unreliable internet and power in some areas.",
-			"es": "Habrá un periodo de gracia de seis horas después del limite de horario, debido a conexión de internet poco confiable y cortes de luz en algunas áreas."
+			"es": "Habrá un periodo de gracia de seis horas después del limite de horario, debido a conexión de internet poco confiable y cortes de luz en algunas áreas.",
 			"pt": "Haver· um perÌodo de toler‚ncia de seis horas depois do hor·rio limite devido a internet e luz inst·vel em algumas regiıes."
 		},
 		{
@@ -133,18 +133,22 @@
 		},
 		{
 			"en": "Judges will rank all contestants that pass verification (If your image is not on here, you did not pass verification).",
+			"es": "Los jurados van a clasificar a todos los concursantes que pasen la verificación (Si su imágen no está aquí, usted no pasó la verificación).",
 			"pt": "Os jurados v„o classificar todos concorrentes que passem pela verificação (Se sua imagem n„o est· aqui, vocÍ n„o se qualificou na verificação)."
 		},
 		{
 			"en": "Winners will be determined by Instant Runoff Voting.",
+			"es": "Los ganadores serán determinados por mayoría absoluta (sistema instant-runoff voting).",
 			"pt": "Os vencedores ser„o determinados pelo sistema de Segundo Turno Instant‚neo (Instant-runoff voting)."
 		},
 		{
 			"en": "50% of the pot is first prize, 25% second prize, 12.5% third prize, and then all participants share the remaining 12.5%.",
+			"es": "50% del pote lo gana el primer lugar, 25% para el segundo lugar, 12.5% para el tercer lugar, y entre todos los participantes se repartirá el remanente 12.5%.",
 			"pt": "50% do total arrecadado È do primeiro lugar, 25% do segundo lugar, 12,5% terceiro lugar, e ent„o todos os outros participantes compartilhar„o os 12,5% restantes."
 		},
 		{
 			"en": "The judge's votes will be published publicly for verification.",
+			"es": "Los votos de los jueces serán publicados para la verificación.",
 			"pt": "Need Translation."
 		}
 	],
@@ -152,6 +156,7 @@
 		{
 			"title": {
 				"en": "Images / Videos And Identification",
+				"es": "Imágenes/ Videos e Identificación",
 				"pt": "Imagens/VÌdeos e IdentificaÁ„o"
 			}
 		},
@@ -160,6 +165,7 @@
 				{
 					"title": {
 						"en": "Summary",
+						"es": "Resumen",
 						"pt": "Resumo"
 					}
 				},

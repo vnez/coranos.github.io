@@ -107,6 +107,8 @@
       }
 
       function onLoad () {
+        console.log('onLoad');
+
         jsonTable('#dataTable', {
           head : [ 'Contestant Number','Registration Date and Time (UTC)','Discord ID', 'Verification Photo<br> <small>Click For Larger Image</small>',
               'Bananos<br> <small>Click For Larger Image</small>', 'Your Strength<br> <small>Click For Video' ],
@@ -126,11 +128,14 @@
           }
         });
 
+        console.log('rules.json');
         $.getJSON('rules.json', function (results) {
           let table = $('#rulesTable').find('tbody');
           table.empty();
+          console.log('rules.json');
           
           for (const [section, rules] of Object.entries(results)) {
+            console.log(section);
             var sectionHtml = '';
             sectionHtml += '<!-- ' + section + ' -->' + '\n';
             sectionHtml += '<h2>' + rules[0].title.en + '</h2>' + '\n';
@@ -149,6 +154,9 @@
                   } else if(subsection ==='pt') {
                     sectionHtml += subrules;
                     sectionHtml += '<br>\n';
+                  } else if(subsection ==='es') {
+                    sectionHtml += subrules;
+                    sectionHtml += '<br>\n';
                   } else if(subsection ==='img') {
                     sectionHtml += '<a target="_blank" href="' + subrules + '"><img class="thumbnail" src="' + subrules + '" /></a>';
                     sectionHtml += '\n';
@@ -157,6 +165,7 @@
                     sectionHtml += '<!-- ' + subsection + ' -->' + '\n';
                     sectionHtml += '<h3>' + subrules[0].title.en + '</h3>' + '\n';
                     sectionHtml += '<ol>\n';
+                    /*
                     for (let subruleIx = 1; subruleIx < subrules.length;subruleIx++) {
                       sectionHtml += '<li>\n';
                       const subrule = subrules[subruleIx];
@@ -166,6 +175,7 @@
                       }
                       sectionHtml += '</li>\n';
                     }
+                    */
                     sectionHtml += '</ol>\n';
                   }
                 }                
