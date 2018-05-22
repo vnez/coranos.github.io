@@ -128,14 +128,11 @@
           }
         });
 
-        console.log('rules.json');
         $.getJSON('rules.json', function (results) {
           let table = $('#rulesTable').find('tbody');
           table.empty();
-          console.log('rules.json');
           
           for (const [section, rules] of Object.entries(results)) {
-            console.log(section);
             var sectionHtml = '';
             sectionHtml += '<!-- ' + section + ' -->' + '\n';
             sectionHtml += '<h2>' + rules[0].title.en + '</h2>' + '\n';
