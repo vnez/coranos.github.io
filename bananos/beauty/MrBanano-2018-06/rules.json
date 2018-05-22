@@ -3,21 +3,25 @@
 		{
 			"title": {
 				"en": "Guidelines (Optional)",
+				"es": "Directrices (Opcional)",
 				"pt": "Diretrizes (opcional)"
 			}
 		},
 		{
 			"en": "Use good lighting. Not too dark or too bright.",
+			"es": "Use buena luz. No muy oscuro ni muy brillante.",
 			"pt": "Use uma iluminaÁ„o boa. Nem muito escuro nem claro demais.",
 			"img": "https://i.pinimg.com/originals/e9/5a/16/e95a162ee2a5a28f332c957b2efb14b9.jpg"
 		},
 		{
 			"en": "Use a good background, light colors like sky blue or white usually make for a better photo.",
+			"es": "Use un buen fondo, colores claros o blanco hacen ver más fácil una foto.",
 			"pt": "Use um plano de fundo adequado, azul claro ou branco s„o geralmente melhores para uma boa foto.",
 			"img": "http://i.dailymail.co.uk/i/pix/2017/01/07/14/3BEBA73700000578-4097364-image-a-59_1483797647357.jpg"
 		},
 		{
 			"en": "Look at the previous contestants and the internet to get good ideas.",
+			"es": "Mire a los participantes previos y la internet para obtener ideas.",
 			"pt": "DÍ uma olhada nos concorrentes e pela internet para ter boas idÈias.",
 			"img": "https://i.pinimg.com/originals/49/1c/53/491c53e51ec33b443337ae50c106c251.jpg"
 		}
@@ -26,51 +30,61 @@
 		{
 			"title": {
 				"en": "General Rules",
+				"es": "Reglas Generales",
 				"pt": "Regras Gerais"
 			}
 		},
 		{
 			"en": "All Contestants must be of the age of majority.",
+			"es": "Todos los participantes deben ser mayores de edad.",
 			"pt": "Todos concorrentes devem ser maior de idade.",
 			"img": "https://vignette.wikia.nocookie.net/lotr/images/7/70/Gandalf%3B_The_White.jpg"
 		},
 		{
 			"en": "A minor can be in the photo and the video with the contestant, but must have clothes covering shoulders to knees.",
+			"es": "Un menor puede aparecer en la foto y en el video con el participante, pero tiene que estar vestido y cubierto de hombros a tobillos.",
 			"pt": "Um menor de idade pode estar na foto e video com o concorrente, mas deve ter roupas cobrindo os ombros e joelhos.",
 			"img": "https://i.pinimg.com/originals/05/64/6f/05646f5b70a847eb5869745cf616c824.jpg"
 		},
 		{
 			"en": "All photos and videos must be legal, and you agree the contest can use them for the contest, visible to the public (not just to judges).",
+			"es": "Todas las fotos y videos tienen que ser legales, y accede a que el concurso los use y sean visibles para el público (no sólo para los jueces).",
 			"pt": "Todas as fotos e vÌdeos devem ser legais e vocÍ concorda que o concurso use-os para divulgaÁ„o p˙blica.",
 			"img": "http://i0.kym-cdn.com/entries/icons/original/000/024/187/hitler.jpg"
 		},
 		{
 			"en": "No Full Nudity. Partial nudity is acceptable.",
+			"es": "Sin desnudez completa. Desnudez parcial es aceptable.",
 			"pt": "Sem nudez total. Nudez parcial È aceit·vel.",
 			"img": "https://media.gettyimages.com/photos/no-nudity-sign-on-cala-xarraca-beach-picture-id520282646"
 		},
 		{
 			"en": "No pornography, no condoms, no or other items used exclusively for sex related activities.",
+			"es": "Sin pornografía, ni condones, ni otros items usados exclusivamente para actividades sexuales.",
 			"pt": "Sem pornografia, sem camisinhas ou outros itens usados exclusivamente para atividades sexuais.",
 			"img": "https://media.boingboing.net/wp-content/uploads/2018/03/storm.jpeg"
 		},
 		{
 			"en": "All contestants must appear to be male. Judges have final say.",
+			"es": "Todos los concursantes deben aparentar ser hombres. Los jurados tienen la palabra final.",
 			"pt": "Todos participantes devem parecer homens. Os juurados tem a palavra final.",
 			"img": "https://vignette.wikia.nocookie.net/lotr/images/9/97/Eowyn-wiki.jpg/revision/latest?cb=20060311102040"
 		},
 		{
 			"en": "No professional photos, we don't want any copyright problems.",
+			"es": "Sin fotos profesionales, no queremos problemas con derechos de autor.",
 			"pt": "Sem fotos profissionais para que n„o tenhamos problemas com direitos autorais (copyright).",
 			"img": "https://3.img-dpreview.com/files/p/E~TS590x0~articles/7323283771/monkey1.jpeg"
 		},
 		{
 			"en": "If you are actually a professional photographer taking a photo of yourself, then that is ok.",
+			"es": "Si usted es un fotógrafo profesional tomando una foto de si mismo, entonces sí está bien.",
 			"pt": "Se vocÍ È um fotÛgrafo profissional de verdade tirando uma foto de vocÍ mesmo ent„o tudo bem.",
 			"img": "https://cms-assets.tutsplus.com/uploads/users/80/posts/26806/image/70-Selfies.jpg"
 		},
 		{
 			"en": "Avoid including anything that would help someone harrass you, like your street address.",
+			"es": "Evite incluir cualquier cosa que pueda permitir a otros acosarle, como su dirección de casa, etc.",
 			"pt": "Evite incluir qualquer coisa que ajude alguÈm a perseguÌ-lo, como a rua de sua residÍncia.",
 			"img": "https://psimonmyway.com/wp-content/uploads/2017/04/16908419_426302601048263_6690234285980385280_n-1024x700.jpg"
 		}
@@ -79,6 +93,7 @@
 		{
 			"title": {
 				"en": "Judgements and Timelines",
+				"es": "Plazos",
 				"pt": "Julgamentos e Prazos"
 			}
 		},
